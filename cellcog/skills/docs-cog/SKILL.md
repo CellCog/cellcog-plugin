@@ -1,6 +1,6 @@
 ---
 name: docs-cog
-description: "AI document generation powered by CellCog — PDF by default, native DOCX when you need it. Create resumes, contracts, reports, proposals, invoices, certificates, NDAs, letters, brochures, and any professional document. Beautiful design with accurate, researched content. #1 on DeepResearch Bench (Apr 2026)."
+description: "Powered by CellCog. Document generation — PDF by default, native DOCX on request. Reports, proposals, invoices, certificates, letters, brochures, resumes, contracts, and NDAs. Professionally designed with researched content."
 ---
 # Docs Cog - Professional Documents Powered by CellCog
 

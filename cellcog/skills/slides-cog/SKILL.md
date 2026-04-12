@@ -1,6 +1,6 @@
 ---
 name: slides-cog
-description: "AI presentation and slide deck generation powered by CellCog. Create pitch decks, keynotes, business presentations, educational slides, investor decks — PDF or native PPTX. Deep research fills content from minimal prompts. #1 on DeepResearch Bench (Apr 2026). Professional slide design, charts, and layouts."
+description: "Powered by CellCog. Presentation and slide deck generation. Pitch decks, keynotes, business presentations, educational slides, and investor decks. PDF or native PPTX. Includes charts, layouts, and researched content."
 ---
 # Slides Cog - Content Worth Presenting, Design Worth Looking At
 

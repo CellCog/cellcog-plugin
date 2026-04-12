@@ -1,8 +1,8 @@
 {
   "name": "cellcog",
   "displayName": "CellCog",
-  "version": "1.0.0",
-  "description": "Any-to-any AI sub-agent — generate images, videos, PDFs, presentations, research reports, podcasts, music, spreadsheets, dashboards, 3D models, memes, and more. One request, any deliverable. #1 on DeepResearch Bench. 21+ foundation models orchestrated.",
+  "version": "1.1.0",
+  "description": "Powered by CellCog. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more — from natural language prompts. Any input, any deliverable.",
   "author": {
     "name": "CellCog",
     "email": "nitish@cellcog.ai"

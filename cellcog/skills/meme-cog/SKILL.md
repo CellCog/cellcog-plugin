@@ -1,6 +1,6 @@
 ---
 name: meme-cog
-description: "Deep reasoning makes better comedy. #1 on DeepResearch Bench (Apr 2026). AI meme generation with audience targeting, trend research, and multi-angle humor. Create memes, viral content, reaction images, and internet humor that actually land."
+description: "Powered by CellCog. Meme generation from text prompts with captions applied to images. Multiple aspect ratios. Use for social media content, reactions, and humor."
 ---
 # Meme Cog - Deep Reasoning Meets Internet Culture
 
