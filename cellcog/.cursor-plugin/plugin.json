@@ -1,0 +1,28 @@
+{
+  "name": "cellcog",
+  "displayName": "CellCog",
+  "version": "1.0.0",
+  "description": "Any-to-any AI sub-agent — generate images, videos, PDFs, presentations, research reports, podcasts, music, spreadsheets, dashboards, 3D models, memes, and more. One request, any deliverable. #1 on DeepResearch Bench. 21+ foundation models orchestrated.",
+  "author": {
+    "name": "CellCog",
+    "email": "nitish@cellcog.ai"
+  },
+  "publisher": "CellCog",
+  "homepage": "https://cellcog.ai",
+  "repository": "https://github.com/CellCog/cellcog-cursor-plugin",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "image-generation", "video-generation", "pdf", "presentation",
+    "research", "podcast", "music", "spreadsheet", "dashboard",
+    "3d-model", "meme", "ai-agent", "sub-agent", "any-to-any",
+    "multi-modal", "cellcog", "deep-research"
+  ],
+  "category": "ai",
+  "tags": [
+    "media-generation", "research", "documents", "creative",
+    "productivity", "ai-tools"
+  ],
+  "skills": "./skills/",
+  "rules": "./rules/"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "cellcog-plugins",
+  "owner": {
+    "name": "CellCog",
+    "email": "nitish@cellcog.ai"
+  },
+  "metadata": {
+    "description": "CellCog AI sub-agent plugin — any input, any output"
+  },
+  "plugins": [
+    {
+      "name": "cellcog",
+      "source": "./cellcog",
+      "description": "Generate images, videos, PDFs, research, podcasts, spreadsheets, and more from Cursor"
+    }
+  ]
+}
