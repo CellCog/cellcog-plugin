@@ -46,7 +46,7 @@ Ask Cursor to generate any rich media — the plugin automatically routes creati
 | **Video & Cinema** | `video-cog` `cine-cog` `insta-cog` `tube-cog` `seedance-cog` | Marketing videos, explainers, lipsync, social media |
 | **Images & Design** | `image-cog` `brand-cog` `meme-cog` `banana-cog` `3d-cog` `gif-cog` `sticker-cog` | Photos, illustrations, logos, icons, vectors, 3D models |
 | **Audio & Music** | `audio-cog` `music-cog` `pod-cog` | Speech, voiceovers, music, podcasts, sound effects |
-| **Documents & Slides** | `docs-cog` `slides-cog` `sheet-cog` `resume-cog` `legal-cog` | PDFs, presentations, spreadsheets, resumes, contracts |
+| **Documents & Slides** | `docs-cog` `slides-cog` `spreadsheets-cog` `resume-cog` `legal-cog` | PDFs, presentations, spreadsheets, resumes, contracts |
 | **Apps & Prototypes** | `dash-cog` `game-cog` `proto-cog` `diagram-cog` | Dashboards, games, UI prototypes, flowcharts |
 | **Creative** | `comi-cog` `story-cog` `learn-cog` `travel-cog` | Comics, storytelling, education, travel planning |
 | **Development** | `code-cog` `cowork-cog` `project-cog` `think-cog` | Coding agent, co-work, knowledge workspaces |

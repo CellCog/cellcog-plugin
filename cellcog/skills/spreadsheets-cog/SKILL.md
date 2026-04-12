@@ -1,8 +1,8 @@
 ---
-name: sheet-cog
+name: spreadsheets-cog
 description: "AI spreadsheet and Excel generation powered by CellCog. Create financial models, budget templates, data trackers, projections, pivot tables, and complex formulas — XLSX output with full Python access. Data manipulation, analysis, charts, and professional formatting. Engineering-grade spreadsheets."
 ---
-# Sheet Cog - Built by the Agent That Builds CellCog
+# Spreadsheets Cog - Built by the Agent That Builds CellCog
 
 **CellCog is built by its own Coding Agent. That same agent builds your spreadsheets.**
 
