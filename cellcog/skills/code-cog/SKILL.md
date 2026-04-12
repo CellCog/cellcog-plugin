@@ -176,7 +176,7 @@ result = client.create_chat(
 )
 ```
 
-See the **cellcog** mothership skill for complete SDK API reference — delivery modes, `send_message()`, timeouts, file handling, and more.
+See the **cellcog** skill for complete SDK API reference — delivery modes, `send_message()`, timeouts, file handling, and more.
 
 ---
 

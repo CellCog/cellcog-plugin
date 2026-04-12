@@ -10,7 +10,7 @@ All commands are **auto-approved** for SDK/agent users — fully autonomous, no 
 
 ## Prerequisites
 
-This skill requires the `cellcog` mothership skill for SDK setup and API calls.
+This skill requires the `cellcog` skill for SDK setup and API calls.
 
 ```bash
 clawhub install cellcog
@@ -119,7 +119,7 @@ result = client.create_chat(
 
 `"agent"` mode also works with co-work but loads all multimedia tools upfront. Use `"agent core"` for faster, more focused coding sessions.
 
-See the **cellcog** mothership skill for complete SDK API reference — delivery modes, `send_message()`, timeouts, and more.
+See the **cellcog** skill for complete SDK API reference — delivery modes, `send_message()`, timeouts, and more.
 
 ---
 

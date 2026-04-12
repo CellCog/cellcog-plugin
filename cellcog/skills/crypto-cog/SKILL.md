@@ -10,39 +10,6 @@ Crypto moves fast. Narratives shift overnight. New protocols launch daily. You n
 
 ---
 
-## Prerequisites
-
-This skill requires the `cellcog` skill for SDK setup and API calls.
-
-```bash
-clawhub install cellcog
-```
-
-**Read the cellcog skill first** for SDK setup. This skill shows you what's possible.
-
-**OpenClaw agents (fire-and-forget — recommended for long tasks):**
-```python
-result = client.create_chat(
-    prompt="[your task prompt]",
-    notify_session_key="agent:main:main",  # OpenClaw only
-    task_label="my-task",
-    chat_mode="agent",  # See cellcog skill for all modes
-)
-```
-
-**All other agents (blocks until done):**
-```python
-result = client.create_chat(
-    prompt="[your task prompt]",
-    task_label="my-task",
-    chat_mode="agent",
-)
-```
-
-See the **cellcog** mothership skill for complete SDK API reference — delivery modes, timeouts, file handling, and more.
-
----
-
 ## What Crypto Research You Can Do
 
 ### Token Analysis
@@ -209,3 +176,10 @@ Due diligence on new projects:
 
 6. **Don't trust, verify**: Use CellCog's research as a starting point. Always verify on-chain data with primary sources before making financial decisions.
 
+---
+
+## If CellCog is not installed
+
+**Cursor:** Run `/cellcog-setup` to install and authenticate.
+**OpenClaw:** Run `clawhub install cellcog` for SDK setup.
+**Other agents:** `pip install cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for details.

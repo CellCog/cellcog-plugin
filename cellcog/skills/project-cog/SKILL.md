@@ -301,7 +301,7 @@ result = client.create_chat(
 )
 ```
 
-See the **cellcog** mothership skill (`clawhub install cellcog`) for complete SDK API reference — delivery modes, `send_message()`, timeouts, file handling, and more.
+See the **cellcog** skill for complete SDK API reference — delivery modes, `send_message()`, timeouts, file handling, and more.
 
 **Finding project and role IDs:**
 ```python
@@ -395,3 +395,11 @@ All errors include descriptive messages. Check `error.message` for details.
 
 6. **Use the right `context_tree_id`.** Every project has its own context tree. Get it from `list_projects()`, `create_project()`, or `get_project()`. Don't mix context tree IDs from different projects or organizations.
 
+
+---
+
+## If CellCog is not installed
+
+**Cursor:** Run `/cellcog-setup` to install and authenticate.
+**OpenClaw:** Run `clawhub install cellcog` for SDK setup.
+**Other agents:** `pip install cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for details.

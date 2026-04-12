@@ -12,39 +12,6 @@ For problems where you don't know the answer upfront and the solution emerges th
 
 ---
 
-## Prerequisites
-
-This skill requires the `cellcog` skill for SDK setup and API calls.
-
-```bash
-clawhub install cellcog
-```
-
-**Read the cellcog skill first** for SDK setup. This skill shows you what's possible.
-
-**OpenClaw agents (fire-and-forget):**
-```python
-result = client.create_chat(
-    prompt="[your thinking prompt]",
-    notify_session_key="agent:main:main",  # OpenClaw only
-    task_label="my-task",
-    chat_mode="agent",
-)
-```
-
-**All other agents (blocks until done):**
-```python
-result = client.create_chat(
-    prompt="[your thinking prompt]",
-    task_label="my-task",
-    chat_mode="agent",
-)
-```
-
-See the **cellcog** mothership skill for complete SDK API reference.
-
----
-
 ## Why Think-Cog Exists
 
 Most CellCog skills follow a pattern: you know what you want → CellCog delivers it.
@@ -80,7 +47,7 @@ result = client.send_message(
 
 **Think-cog expects back-and-forth conversation**, not single requests. Each exchange deepens understanding.
 
-See the **cellcog** mothership skill for complete SDK API reference.
+See the **cellcog** skill for complete SDK API reference.
 
 ---
 
@@ -245,3 +212,10 @@ Think-cog is for when you're in discovery mode. Other skills are for when you're
 
 The conversation continues, ideas refine, and eventually you arrive at a clear strategy to execute.
 
+---
+
+## If CellCog is not installed
+
+**Cursor:** Run `/cellcog-setup` to install and authenticate.
+**OpenClaw:** Run `clawhub install cellcog` for SDK setup.
+**Other agents:** `pip install cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for details.

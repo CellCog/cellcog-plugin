@@ -10,39 +10,6 @@ description: "AI resume builder and cover letter writer powered by CellCog. Crea
 
 ---
 
-## Prerequisites
-
-This skill requires the `cellcog` skill for SDK setup and API calls.
-
-```bash
-clawhub install cellcog
-```
-
-**Read the cellcog skill first** for SDK setup. This skill shows you what's possible.
-
-**OpenClaw agents (fire-and-forget — recommended for long tasks):**
-```python
-result = client.create_chat(
-    prompt="[your task prompt]",
-    notify_session_key="agent:main:main",  # OpenClaw only
-    task_label="my-task",
-    chat_mode="agent",  # See cellcog skill for all modes
-)
-```
-
-**All other agents (blocks until done):**
-```python
-result = client.create_chat(
-    prompt="[your task prompt]",
-    task_label="my-task",
-    chat_mode="agent",
-)
-```
-
-See the **cellcog** mothership skill for complete SDK API reference — delivery modes, timeouts, file handling, and more.
-
----
-
 ## What You Can Create
 
 ### Resumes & CVs
@@ -146,3 +113,10 @@ Showcase your work:
 
 5. **Choose your format**: PDF is the default for polished, presentation-ready resumes. Request DOCX when you need to edit or when ATS systems require Word format.
 
+---
+
+## If CellCog is not installed
+
+**Cursor:** Run `/cellcog-setup` to install and authenticate.
+**OpenClaw:** Run `clawhub install cellcog` for SDK setup.
+**Other agents:** `pip install cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for details.

@@ -10,39 +10,6 @@ Legal is the frontier of human intelligence — and it's done best when powered 
 
 ---
 
-## Prerequisites
-
-This skill requires the `cellcog` skill for SDK setup and API calls.
-
-```bash
-clawhub install cellcog
-```
-
-**Read the cellcog skill first** for SDK setup. This skill shows you what's possible.
-
-**OpenClaw agents (fire-and-forget — recommended for long tasks):**
-```python
-result = client.create_chat(
-    prompt="[your task prompt]",
-    notify_session_key="agent:main:main",  # OpenClaw only
-    task_label="my-task",
-    chat_mode="agent",  # See cellcog skill for all modes
-)
-```
-
-**All other agents (blocks until done):**
-```python
-result = client.create_chat(
-    prompt="[your task prompt]",
-    task_label="my-task",
-    chat_mode="agent",
-)
-```
-
-See the **cellcog** mothership skill for complete SDK API reference — delivery modes, timeouts, file handling, and more.
-
----
-
 ## Important Note
 
 CellCog generates legal documents using frontier AI reasoning and research. However, **AI-generated legal documents should be reviewed by a qualified attorney** before execution — especially for high-value contracts, regulated industries, or jurisdiction-specific requirements. CellCog provides an excellent starting point that saves significant time and cost, but human legal review remains important for critical documents.
@@ -174,3 +141,10 @@ Essential documents for founders:
 
 5. **Indicate formality level**: "Standard startup-friendly language" vs. "formal corporate tone" changes the output significantly.
 
+---
+
+## If CellCog is not installed
+
+**Cursor:** Run `/cellcog-setup` to install and authenticate.
+**OpenClaw:** Run `clawhub install cellcog` for SDK setup.
+**Other agents:** `pip install cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for details.

@@ -10,39 +10,6 @@ Most 3D generation tools need a single, perfectly composed reference image. Cell
 
 ---
 
-## Prerequisites
-
-This skill requires the `cellcog` skill for SDK setup and API calls.
-
-```bash
-clawhub install cellcog
-```
-
-**Read the cellcog skill first** for SDK setup. This skill shows you what's possible.
-
-**OpenClaw agents (fire-and-forget — recommended for long tasks):**
-```python
-result = client.create_chat(
-    prompt="[your task prompt]",
-    notify_session_key="agent:main:main",  # OpenClaw only
-    task_label="my-task",
-    chat_mode="agent",  # See cellcog skill for all modes
-)
-```
-
-**All other agents (blocks until done):**
-```python
-result = client.create_chat(
-    prompt="[your task prompt]",
-    task_label="my-task",
-    chat_mode="agent",
-)
-```
-
-See the **cellcog** mothership skill for complete SDK API reference — delivery modes, timeouts, file handling, and more.
-
----
-
 ## What Makes This Different
 
 ### Any Input → 3D
@@ -187,3 +154,10 @@ All 3D models are delivered as **GLB files** (binary glTF) — the universal web
 
 5. **Request PBR materials for realism**: If you need metallic, roughness, and normal maps — say so. Essential for game engines and realistic rendering.
 
+---
+
+## If CellCog is not installed
+
+**Cursor:** Run `/cellcog-setup` to install and authenticate.
+**OpenClaw:** Run `clawhub install cellcog` for SDK setup.
+**Other agents:** `pip install cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for details.
