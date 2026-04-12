@@ -204,4 +204,4 @@ CellCog presentations can include:
 
 **Cursor:** Run `/cellcog-setup` to install and authenticate.
 **OpenClaw:** Run `clawhub install cellcog` for SDK setup.
-**Other agents:** `pip install cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for details.
+**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See https://cellcog.ai for SDK docs.
