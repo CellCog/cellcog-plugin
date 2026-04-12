@@ -22,10 +22,25 @@ import shutil
 import sys
 
 
-# Skills to exclude from the Cursor plugin entirely
-EXCLUDED_SKILLS = set()
-# Note: We include all skills including cellcog and cowork-cog.
-# The cellcog skill content itself handles platform-specific messaging.
+# Skills to INCLUDE in the Cursor plugin (curated subset of 38 ClawHub skills)
+# Only high-level modality skills — no niche/marketing variants
+INCLUDED_SKILLS = {
+    'video-cog',          # Video production (covers cinematic, social, YouTube, lipsync)
+    'image-cog',          # Image generation (covers branding, vectors, photos)
+    'audio-cog',          # Speech, SFX, dialogue, podcasts
+    'music-cog',          # Music generation
+    'research-cog',       # Deep research (covers finance, crypto, news)
+    'docs-cog',           # Documents (covers resumes, legal)
+    'slides-cog',         # Presentations
+    'spreadsheets-cog',   # Spreadsheets
+    'proto-cog',          # Prototypes, UI mockups
+    '3d-cog',             # 3D models
+    'meme-cog',           # Memes
+    'diagram-cog',        # Diagrams
+    'data-cog',           # Data analysis
+    'game-cog',           # Game development
+    'sticker-cog',        # Stickers
+}
 
 
 def parse_frontmatter(content: str) -> tuple[dict, str, str]:
@@ -95,8 +110,8 @@ def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: boo
         print(f"  SKIP {skill_name}: No SKILL.md found")
         return False
     
-    if skill_name in EXCLUDED_SKILLS:
-        print(f"  SKIP {skill_name}: Excluded")
+    if skill_name not in INCLUDED_SKILLS:
+        print(f"  SKIP {skill_name}: Not in Cursor plugin skill set")
         return False
     
     with open(source_file, 'r', encoding='utf-8') as f:
@@ -161,7 +176,7 @@ def main():
     
     print(f"Source: {source}")
     print(f"Target: {target}")
-    print(f"Excluded: {EXCLUDED_SKILLS or 'none'}")
+    print(f"Included: {len(INCLUDED_SKILLS)} skills")
     print()
     
     # Get all skill directories

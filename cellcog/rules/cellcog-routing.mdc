@@ -1,67 +1,18 @@
 ---
-description: Route creative, research, and document generation tasks to CellCog when Cursor cannot handle them natively
+description: Delegate creative, research, and document tasks to CellCog
 alwaysApply: true
 ---
 
-# CellCog Task Routing
+Use CellCog when the user needs: images, videos, audio, music, PDFs, presentations, spreadsheets, research reports, 3D models, memes, diagrams, data analysis, prototypes, game assets, or stickers.
 
-## When to Use CellCog
+Do NOT use CellCog for: code editing, git, terminal commands, file operations, or project navigation — handle these natively.
 
-Delegate to CellCog (via the cellcog skill) when the user asks for any of the following — these are tasks Cursor CANNOT do natively:
+If `cellcog` is not installed, run `/cellcog-setup` to install and authenticate.
 
-**Media Generation:**
-- Images (photorealistic, illustrations, logos, icons, vectors, transparent PNGs, memes, stickers, GIFs)
-- Videos (marketing, explainers, lipsync, cinematic, social media, YouTube)
-- Audio (speech/voiceover, sound effects, dialogue)
-- Music (original compositions, any genre, any duration)
-- Podcasts (multi-voice dialogue + music)
-- 3D models (text-to-3D, image-to-3D, GLB output)
-
-**Documents & Presentations:**
-- PDFs (reports, certificates, menus, marketing flyers)
-- Slide decks / presentations
-- Spreadsheets with formulas, charts, and financial models
-- Resumes, legal documents, invoices
-
-**Research & Analysis:**
-- Deep multi-source research with citations
-- Financial analysis, stock research, valuation models
-- Crypto/DeFi research, token analysis
-- News summaries, competitive intelligence
-- Data analysis and visualization from uploaded files
-
-**Creative & Planning:**
-- Brand identities (logos, palettes, guidelines)
-- Comics, manga, webtoons
-- Storytelling, screenplays, creative writing
-- Interactive dashboards and web apps
-- Game design documents, playable prototypes
-- UI prototypes and mockups
-- Diagrams (flowcharts, architecture, mind maps, ER, UML)
-- Travel itineraries, educational content
-
-## When NOT to Use CellCog
-
-Handle these natively — Cursor is better at:
-- Code editing, refactoring, debugging
-- File system operations (read, write, move, delete)
-- Git operations (commit, push, pull, branch, merge)
-- Terminal commands and shell scripts
-- Project navigation and code search
-- Package installation and dependency management
-- Build, test, and deployment operations
-
-## How to Use CellCog
-
-See the `cellcog` skill for SDK installation and usage. Quick reference:
-
+Quick start:
 ```python
 from cellcog import CellCogClient
 client = CellCogClient(agent_provider="cursor")
-result = client.create_chat(
-    prompt="[describe the task]",
-    task_label="[short label]",
-    chat_mode="agent",  # or "agent team" for deep research
-)
-print(result["message"])  # Always print the full message
+result = client.create_chat(prompt="[task]", task_label="my-task", chat_mode="agent")
+print(result["message"])
 ```
