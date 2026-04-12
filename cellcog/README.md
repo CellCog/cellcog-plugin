@@ -50,6 +50,7 @@ Ask Cursor to generate any rich media — the plugin automatically routes tasks 
 | `data-cog` | Data analysis and visualization |
 | `game-cog` | Game assets, GDDs, playable prototypes |
 | `sticker-cog` | Sticker packs and custom emoji |
+| `cellcog` | SDK reference — create_chat, files, modes, timeouts, credits |
 
 ## Links
 
