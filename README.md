@@ -4,7 +4,7 @@ This repository contains the [CellCog](https://cellcog.ai) plugin for the [Curso
 
 ## What is CellCog?
 
-CellCog is an any-to-any AI sub-agent that generates images, videos, PDFs, presentations, research reports, podcasts, music, spreadsheets, dashboards, 3D models, and more — all from natural language prompts. #1 on [DeepResearch Bench](https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard).
+CellCog is an any-to-any AI sub-agent that generates images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more — all from natural language prompts.
 
 ## Installation
 
@@ -16,43 +16,57 @@ In Cursor:
 ## Plugin Structure
 
 ```
-cellcog/                    # The plugin
+cellcog/                        # The plugin
 ├── .cursor-plugin/
-│   └── plugin.json         # Plugin manifest
+│   └── plugin.json             # Plugin manifest (v1.1.1)
 ├── assets/
-│   └── logo.png            # CellCog logo
-├── skills/                 # 38 capability skills
-│   ├── cellcog/            # Mothership — SDK setup, auth, API reference
-│   ├── video-cog/          # Video production
-│   ├── research-cog/       # Deep research
-│   ├── image-cog/          # Image generation
-│   └── ...                 # 34 more skills
+│   └── logo.png                # CellCog logo (full-bleed, dark bg)
+├── skills/                     # 16 curated skills
+│   ├── cellcog/                # Core — SDK reference, file handling, chat modes
+│   ├── video-cog/              # Video production
+│   ├── image-cog/              # Image generation
+│   ├── audio-cog/              # Audio, speech, podcasts
+│   ├── music-cog/              # Music generation
+│   ├── research-cog/           # Deep research
+│   ├── docs-cog/               # Document generation
+│   ├── slides-cog/             # Presentations
+│   ├── spreadsheets-cog/       # Spreadsheets
+│   ├── proto-cog/              # UI prototypes
+│   ├── 3d-cog/                 # 3D models
+│   ├── meme-cog/               # Memes
+│   ├── diagram-cog/            # Diagrams
+│   ├── data-cog/               # Data analysis
+│   ├── game-cog/               # Game development
+│   └── sticker-cog/            # Stickers
 ├── rules/
-│   └── cellcog-routing.mdc # Routes tasks to CellCog
-└── README.md               # Plugin documentation
+│   └── cellcog-routing.mdc     # Routes tasks to CellCog
+├── commands/
+│   └── cellcog-setup.md        # /cellcog-setup (install + auth)
+└── README.md                   # Plugin documentation
 ```
 
 ## Development
 
 ### Syncing Skills from Monorepo
 
-Skills are authored in the CellCog monorepo and synced to this repo using:
+Skills are authored in the CellCog monorepo (38 skills) and a curated subset of 16 is synced to this repo:
 
 ```bash
 python3 scripts/sync_skills.py
 ```
 
-This strips ClawHub-specific YAML frontmatter, keeping only `name` and `description` (which both Cursor and ClawHub require).
+The sync script strips ClawHub-specific YAML frontmatter (keeping only `name` and `description`) and applies an `INCLUDED_SKILLS` whitelist. The `cellcog` core skill also has its cross-selling grid stripped during sync.
 
 ### Updating the Icon
 
-The plugin icon is generated from the CellCog light logo on a dark background. To regenerate:
+The plugin icon is generated from the CellCog light logo on a dark background (full-bleed, 88% logo scale):
 
 ```bash
-# From the monorepo
+# From the monorepo — regenerate all icons including Cursor
 python3 electron/cellcog-desktop/scripts/generate_icons.py
-# Then copy to this repo
-cp electron/cellcog-desktop/build/icon.png ../cellcog-cursor-plugin/cellcog/assets/logo.png
+
+# Copy the Cursor-specific icon (full-bleed, no macOS padding) to this repo
+cp electron/cellcog-desktop/build/icon-cursor.png cellcog/assets/logo.png
 ```
 
 ## License
