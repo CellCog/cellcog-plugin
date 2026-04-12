@@ -4,7 +4,7 @@ description: "Powered by CellCog. Deep multi-source research with citations. Mar
 ---
 # Research Cog - Deep Research Powered by CellCog
 
-**#1 on DeepResearch Bench (Apr 2026).** Your AI research analyst for comprehensive, citation-backed research on any topic.
+Your AI research analyst for comprehensive, citation-backed research on any topic.
 
 Leaderboard: https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard
 

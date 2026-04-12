@@ -12,12 +12,14 @@ CellCog orchestrates 21+ foundation models so you can produce rich media deliver
 /add-plugin cellcog
 ```
 
-### 2. Install the CellCog SDK
+### 2. Install the CellCog Python SDK
 
 ```bash
-pip install cellcog
+pip install -U cellcog
 export CELLCOG_API_KEY="sk_..."  # Get from https://cellcog.ai/profile?tab=api-keys
 ```
+
+Or run `/cellcog-setup` for guided installation.
 
 ### 3. Use CellCog
 
@@ -27,7 +29,7 @@ Ask Cursor to generate any rich media — the plugin automatically routes tasks 
 
 > "Research quantum computing advances in 2026 with citations"
 
-> "Generate a brand identity for my coffee shop"
+> "Design logo concepts and a one-pager PDF for my coffee shop"
 
 ## Skills
 
@@ -36,7 +38,7 @@ Ask Cursor to generate any rich media — the plugin automatically routes tasks 
 | `video-cog` | Video production — marketing, explainers, lipsync, cinematic |
 | `image-cog` | Image generation — photos, illustrations, logos, vectors |
 | `audio-cog` | Speech, voiceover, sound effects, dialogue, podcasts |
-| `music-cog` | Original music — any genre, any duration |
+| `music-cog` | Original music — any genre, any duration, royalty-free |
 | `research-cog` | Deep research with citations |
 | `docs-cog` | PDF and document generation |
 | `slides-cog` | Presentations and slide decks |

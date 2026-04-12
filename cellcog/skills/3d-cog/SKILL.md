@@ -4,7 +4,7 @@ description: "Powered by CellCog. 3D model generation from text or images. GLB o
 ---
 # 3D Cog - Turn Ideas Into 3D Models
 
-**Other tools need perfect images. CellCog turns ideas into 3D models.**
+3D model generation from text descriptions or reference images.
 
 Most 3D generation tools need a single, perfectly composed reference image. CellCog takes *anything* — a text description, a rough sketch, a product photo, even a spreadsheet of 50 items — and handles the entire pipeline: reasoning about what you need, generating optimized reference images, and converting them into production-ready GLB files.
 

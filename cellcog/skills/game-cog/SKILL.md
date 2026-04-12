@@ -4,7 +4,7 @@ description: "Powered by CellCog. Game development assets and prototypes. Charac
 ---
 # Game Cog - Build Game Worlds, Not Just Sprites
 
-**Other tools generate sprites. CellCog builds game worlds.** #1 on DeepResearch Bench (Apr 2026) for deep game design reasoning.
+Game development assets and prototypes with character consistency across all assets.
 
 Game development is a multi-discipline problem — mechanics, art, music, UI, and level design all need to feel unified. CellCog reasons deeply about your game's vision first, then produces character-consistent art, tilesets, music, sound effects, UI elements, 3D models, and full game design documents — all cohesive from a single brief.
 

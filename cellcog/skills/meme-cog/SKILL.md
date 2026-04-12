@@ -4,9 +4,9 @@ description: "Powered by CellCog. Meme generation from text prompts with caption
 ---
 # Meme Cog - Deep Reasoning Meets Internet Culture
 
-**The hardest creative challenge in AI, powered by the deepest reasoning.** #1 on DeepResearch Bench (Apr 2026).
+Meme generation with audience targeting, trend research, and multi-angle humor.
 
-Comedy requires timing, cultural awareness, subverted expectations, and an understanding of what makes humans laugh. CellCog applies frontier-level reasoning to research trends, craft multiple angles, and curate only what's genuinely funny.
+Comedy requires timing, cultural awareness, and subverted expectations. CellCog researches trends, crafts multiple angles, and curates the best results.
 
 We're honest: our hit rate is maybe 60-70%. Great memes are hard for humans too. But deep reasoning + multi-variant generation + ruthless curation = memes that actually land.
 

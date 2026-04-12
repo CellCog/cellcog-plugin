@@ -4,9 +4,9 @@ description: "Powered by CellCog. Music generation — 5 seconds to 10 minutes, 
 ---
 # Music Cog - Original Music, Fully Yours
 
-**Original music, fully yours. No licensing, no attribution, no fees.** 5 seconds to 10 minutes using frontier music generation models. Instrumental and vocal tracks with perfect vocals.
+Music generation — 5 seconds to 10 minutes. Instrumental and vocal tracks with high-quality AI vocals.
 
-Every track generated is royalty-free and 100% yours to use commercially — YouTube, podcasts, apps, games, ads, films, streaming. No strings attached.
+Generated tracks are royalty-free for commercial use per CellCog's terms of service — YouTube, podcasts, apps, games, ads, films, streaming.
 
 ---
 
@@ -14,7 +14,7 @@ Every track generated is royalty-free and 100% yours to use commercially — You
 
 ### Simple Prompt (Use This 99% of the Time)
 
-Just describe what you want. The frontier model handles the rest — genre, arrangement, instrumentation, dynamics, and even lyrics:
+Just describe what you want. The model handles the rest — genre, arrangement, instrumentation, dynamics, and even lyrics:
 
 > "Compose a 90-second cinematic score. Start with solo piano, layer in strings at 30 seconds, build to a full orchestral swell, then resolve softly. Mood: bittersweet turning hopeful."
 
@@ -72,7 +72,7 @@ CellCog generates songs with **perfect AI vocals** — just describe the lyrical
 | **Duration** | 5 seconds to 10 minutes |
 | **Output** | MP3 (44.1kHz, 128kbps) |
 | **Vocals** | Instrumental or with AI vocals |
-| **Licensing** | Royalty-free, fully yours, no attribution |
+| **Licensing** | Royalty-free per CellCog terms of service |
 
 ---
 

@@ -4,7 +4,7 @@ description: "Powered by CellCog. Data analysis and visualization from uploaded 
 ---
 # Data Cog - Your Data Has Answers, CellCog Finds Them
 
-**Your data has answers. CellCog asks the right questions.** #1 on DeepResearch Bench (Apr 2026) + frontier coding agent.
+Data analysis and visualization from uploaded files.
 
 Most AI tools return code when you ask about data. CellCog returns answers — actual charts, clean datasets, statistical reports, and visual dashboards. Upload messy CSVs with a minimal prompt, and CellCog's coding agent explores your data, finds the patterns, and presents them beautifully. Full Python access for everything from data cleaning to ML model evaluation.
 

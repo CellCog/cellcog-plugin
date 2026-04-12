@@ -4,7 +4,7 @@ description: "Powered by CellCog. Diagram generation from plain text. Flowcharts
 ---
 # Diagram Cog - Describe It in Words, Get It as a Diagram
 
-**Other tools make you drag boxes. CellCog reads your mind.** Describe your system, process, or idea in plain English — CellCog produces professional, interactive diagrams you can share with a URL.
+Describe your system, process, or idea in plain English — CellCog produces professional, interactive diagrams you can share with a URL.
 
 No Visio. No Lucidchart. No dragging boxes around for hours. Just describe what you need, and CellCog renders it as an interactive web page you can zoom, pan, and click — or a print-ready PDF for documentation.
 
@@ -27,7 +27,7 @@ CellCog eliminates all of this. Describe your diagram in words, get a shareable 
 
 Other AI diagram tools output a static image. CellCog does something fundamentally different.
 
-CellCog's frontier coding agent — the same one that builds CellCog itself — **reasons about your system, picks the right rendering approach, and deploys an interactive web application** you can share with a URL. Zoom into your microservices architecture. Click a node to see details. Pan across a sprawling org chart. Or export to a print-ready PDF for your board deck.
+CellCog **reasons about your system, picks the right rendering approach, and deploys an interactive web application** you can share with a URL. Zoom into your microservices architecture. Click a node to see details. Pan across a sprawling org chart. Or export to a print-ready PDF for your board deck.
 
 | What You Ask For | What CellCog Actually Does |
 |-----------------|---------------------------|

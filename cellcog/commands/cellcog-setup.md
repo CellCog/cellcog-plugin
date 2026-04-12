@@ -1,11 +1,11 @@
 ---
 name: cellcog-setup
-description: Set up CellCog (install SDK and authenticate)
+description: Set up the CellCog Python SDK (install and authenticate)
 ---
 
 # CellCog Setup
 
-## Step 1: Check if SDK is installed
+## Step 1: Check if the CellCog Python SDK is installed
 
 ```bash
 pip show cellcog
@@ -14,8 +14,10 @@ pip show cellcog
 If installed, skip to **Step 2**. If not found, install it:
 
 ```bash
-pip install cellcog
+pip install -U cellcog
 ```
+
+Note: Use the same Python interpreter that Cursor uses. If you're in a virtual environment, make sure it's activated.
 
 ## Step 2: Check authentication
 
@@ -35,15 +37,29 @@ If the status shows `"configured": false` or the command fails with an authentic
 export CELLCOG_API_KEY="sk_..."
 ```
 
+For persistent setup, add the export to `~/.zshrc` or `~/.bashrc`, or use Cursor's environment settings.
+
 Then re-run the check above.
 
 ## Step 3: Verify
 
 ```python
+import cellcog
+print(f"CellCog SDK version: {cellcog.__version__}")
+
 from cellcog import CellCogClient
 client = CellCogClient(agent_provider="cursor")
 status = client.get_account_status()
-print(f"✅ CellCog is ready! Authenticated as: {status.get('email', 'unknown')}")
+print(f"Authenticated as: {status.get('email', 'unknown')}")
+print("CellCog is ready to use!")
 ```
 
-If everything works, CellCog is ready to use. Try asking Cursor to generate an image, create a PDF, or run a research task.
+## If the API returns HTTP 426
+
+The CellCog server enforces a minimum SDK version. If you see `sdk_upgrade_required`, upgrade:
+
+```bash
+pip install -U cellcog
+```
+
+The error response includes the `minimum_version` required.

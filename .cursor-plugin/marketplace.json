@@ -11,7 +11,7 @@
     {
       "name": "cellcog",
       "source": "./cellcog",
-      "description": "Generate images, videos, PDFs, research, podcasts, spreadsheets, and more from Cursor"
+      "description": "Powered by CellCog. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more — from natural language prompts."
     }
   ]
 }

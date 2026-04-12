@@ -7,7 +7,7 @@ Use CellCog when the user needs: images, videos, audio, music, PDFs, presentatio
 
 Do NOT use CellCog for: code editing, git, terminal commands, file operations, or project navigation — handle these natively.
 
-If `cellcog` is not installed, run `/cellcog-setup` to install and authenticate.
+If the CellCog Python SDK is not installed, run `/cellcog-setup` to install and authenticate.
 
 Quick start:
 ```python

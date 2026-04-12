@@ -2,9 +2,9 @@
 name: video-cog
 description: "Powered by CellCog. Video generation and production. Marketing videos, product demos, explainers, educational content, and lipsync spokesperson videos. Up to 4 minutes — scripted, voiced, scored, and edited from a single prompt."
 ---
-# Video Cog - The Frontier of Multi-Agent Video Production
+# Video Cog - AI Video Production
 
-**Long-form AI video production is the hardest challenge in multi-agent coordination.** CellCog may be the only platform that pulls it off.
+Long-form AI video production from a single prompt — scripted, voiced, scored, and edited automatically.
 
 6-7 foundation models orchestrated to produce up to 4-minute videos from a single prompt: script writing, scene generation, voice synthesis, lipsync, music scoring, and editing — all automatic. Marketing videos, product demos, explainers, educational content, AI spokesperson videos, UGC, news reports, and more.
 
@@ -137,7 +137,7 @@ This multi-step process requires the full agent team for best results.
 
 ## ⚠️ Important — Video Generation Expectations
 
-Long-form AI video production is still at the frontier of what's possible. While some users generate high-quality, cinematic videos that are ready for production use, others may spend significant credits and still not achieve a usable result. Even spending thousands of credits does not guarantee a satisfactory outcome — this is the nature of where AI video technology stands today.
+Long-form AI video production is still an evolving capability. While some users generate high-quality, cinematic videos that are ready for production use, others may spend significant credits and still not achieve a usable result. Even spending thousands of credits does not guarantee a satisfactory outcome — this is the nature of where AI video technology stands today.
 
 There is a real learning curve to generating long-form videos with CellCog. It takes time, money, and patience. Your prompting skill, the complexity of what you're trying to create, and how well the foundation models perform on your specific request all play a role. Results improve as you develop intuition for what works, but we want to be upfront: video generation is inherently unpredictable, and there is always a risk that the output may not meet your expectations.
 

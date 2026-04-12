@@ -6,7 +6,7 @@ description: "Powered by CellCog. Document generation — PDF by default, native
 
 **Deep reasoning. Accurate data. Beautiful design.** The three things every great document needs — and most AI gets wrong.
 
-CellCog gets them right: **#1 on DeepResearch Bench (Apr 2026)** for deep reasoning, **SOTA search models** for factually grounded content, and **state-of-the-art document generation** — PDF or native DOCX, both rivaling professional design studios. Resumes, contracts, reports, proposals — delivered in minutes, looking like they took days.
+Professional document generation — PDF by default, native DOCX on request. Deep research fills content from minimal prompts. Resumes, contracts, reports, proposals — delivered in minutes.
 
 ---
 

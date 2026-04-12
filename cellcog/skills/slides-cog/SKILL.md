@@ -6,8 +6,8 @@ description: "Powered by CellCog. Presentation and slide deck generation. Pitch 
 
 **Great slides need two things: content worth presenting and design worth looking at.** CellCog takes both seriously.
 
-- **Content:** #1 on DeepResearch Bench (Apr 2026) — your prompt can be minimal and CellCog will research and fill in the substance mindfully, not just pad slides with filler
-- **Design:** State-of-the-art presentation generation — PDF slides or native PPTX, with layouts, typography, and visuals you can present as-is
+- **Content:** Your prompt can be minimal — CellCog researches and fills in substance, not filler
+- **Design:** PDF slides or native PPTX, with layouts, typography, and visuals you can present as-is
 
 Pitch decks, keynotes, board presentations, image slideshows — ready to present, not ready to fix.
 
