@@ -1,10 +1,10 @@
 ---
 name: research-cog
-description: "Powered by CellCog. Deep multi-source research with citations. Market research, competitive analysis, investment research, academic research, due diligence, and literature reviews. Synthesizes hundreds of sources into structured reports."
+description: "Powered by CellCog. #1 on DeepResearch Bench. Deep multi-source research with citations. Market research, competitive analysis, investment research, academic research, due diligence, and literature reviews. Synthesizes hundreds of sources into structured reports."
 ---
 # Research Cog - Deep Research Powered by CellCog
 
-Your AI research analyst for comprehensive, citation-backed research on any topic.
+**#1 on DeepResearch Bench (Apr 2026).** Your AI research analyst for comprehensive, citation-backed research on any topic.
 
 Leaderboard: https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard
 
