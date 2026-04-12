@@ -6,6 +6,31 @@ description: "Powered by CellCog. Image generation and editing. Text-to-image, i
 
 Create professional images with AI - from single images to consistent character sets to product photography.
 
+## How to Use
+
+For your first CellCog task in a session, read the **cellcog** skill for the full SDK reference — file handling, chat modes, timeouts, and more.
+
+**OpenClaw (fire-and-forget):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    notify_session_key="agent:main:main",
+    task_label="my-task",
+    chat_mode="agent",
+)
+```
+
+**Cursor / Claude Code / Other agents (blocks until done):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    task_label="my-task",
+    chat_mode="agent",
+)
+print(result["message"])
+```
+
+
 ---
 
 ## What Models Do We Use
@@ -160,4 +185,4 @@ For simple single images, `chat_mode="agent"` can work faster.
 
 **Cursor:** Run `/cellcog-setup` to install and authenticate.
 **OpenClaw:** Run `clawhub install cellcog` for SDK setup.
-**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See https://cellcog.ai for SDK docs.
+**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.

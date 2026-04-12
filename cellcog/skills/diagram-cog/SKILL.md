@@ -8,6 +8,31 @@ Describe your system, process, or idea in plain English — CellCog produces pro
 
 No Visio. No Lucidchart. No dragging boxes around for hours. Just describe what you need, and CellCog renders it as an interactive web page you can zoom, pan, and click — or a print-ready PDF for documentation.
 
+## How to Use
+
+For your first CellCog task in a session, read the **cellcog** skill for the full SDK reference — file handling, chat modes, timeouts, and more.
+
+**OpenClaw (fire-and-forget):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    notify_session_key="agent:main:main",
+    task_label="my-task",
+    chat_mode="agent",
+)
+```
+
+**Cursor / Claude Code / Other agents (blocks until done):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    task_label="my-task",
+    chat_mode="agent",
+)
+print(result["message"])
+```
+
+
 ---
 
 ## Why Diagrams Are Hard
@@ -275,4 +300,4 @@ CellCog defaults to interactive HTML — the whole point is diagrams you can exp
 
 **Cursor:** Run `/cellcog-setup` to install and authenticate.
 **OpenClaw:** Run `clawhub install cellcog` for SDK setup.
-**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See https://cellcog.ai for SDK docs.
+**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.

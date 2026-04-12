@@ -8,6 +8,31 @@ Long-form AI video production from a single prompt — scripted, voiced, scored,
 
 6-7 foundation models orchestrated to produce up to 4-minute videos from a single prompt: script writing, scene generation, voice synthesis, lipsync, music scoring, and editing — all automatic. Marketing videos, product demos, explainers, educational content, AI spokesperson videos, UGC, news reports, and more.
 
+## How to Use
+
+For your first CellCog task in a session, read the **cellcog** skill for the full SDK reference — file handling, chat modes, timeouts, and more.
+
+**OpenClaw (fire-and-forget):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    notify_session_key="agent:main:main",
+    task_label="my-task",
+    chat_mode="agent",
+)
+```
+
+**Cursor / Claude Code / Other agents (blocks until done):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    task_label="my-task",
+    chat_mode="agent",
+)
+print(result["message"])
+```
+
+
 ---
 
 ## What Videos You Can Create
@@ -163,4 +188,4 @@ There is a real learning curve to generating long-form videos with CellCog. It t
 
 **Cursor:** Run `/cellcog-setup` to install and authenticate.
 **OpenClaw:** Run `clawhub install cellcog` for SDK setup.
-**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See https://cellcog.ai for SDK docs.
+**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.

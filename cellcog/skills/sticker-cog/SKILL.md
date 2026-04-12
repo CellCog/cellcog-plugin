@@ -10,6 +10,31 @@ Generating one cute sticker is easy. Every AI tool can do that. But generating a
 
 CellCog maintains character identity across every single generation, delivers with transparent backgrounds, and packages everything for your target platform — WhatsApp, Telegram, Discord, Slack, or iMessage.
 
+## How to Use
+
+For your first CellCog task in a session, read the **cellcog** skill for the full SDK reference — file handling, chat modes, timeouts, and more.
+
+**OpenClaw (fire-and-forget):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    notify_session_key="agent:main:main",
+    task_label="my-task",
+    chat_mode="agent",
+)
+```
+
+**Cursor / Claude Code / Other agents (blocks until done):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    task_label="my-task",
+    chat_mode="agent",
+)
+print(result["message"])
+```
+
+
 ---
 
 ## Why Sticker Packs Are Hard
@@ -253,4 +278,4 @@ Tell CellCog which platform you're targeting and it handles the formatting autom
 
 **Cursor:** Run `/cellcog-setup` to install and authenticate.
 **OpenClaw:** Run `clawhub install cellcog` for SDK setup.
-**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See https://cellcog.ai for SDK docs.
+**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.

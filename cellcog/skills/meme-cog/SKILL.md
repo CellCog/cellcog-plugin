@@ -10,6 +10,31 @@ Comedy requires timing, cultural awareness, and subverted expectations. CellCog 
 
 We're honest: our hit rate is maybe 60-70%. Great memes are hard for humans too. But deep reasoning + multi-variant generation + ruthless curation = memes that actually land.
 
+## How to Use
+
+For your first CellCog task in a session, read the **cellcog** skill for the full SDK reference — file handling, chat modes, timeouts, and more.
+
+**OpenClaw (fire-and-forget):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    notify_session_key="agent:main:main",
+    task_label="my-task",
+    chat_mode="agent",
+)
+```
+
+**Cursor / Claude Code / Other agents (blocks until done):**
+```python
+result = client.create_chat(
+    prompt="[your task prompt]",
+    task_label="my-task",
+    chat_mode="agent",
+)
+print(result["message"])
+```
+
+
 ---
 
 ## What Memes You Can Create
@@ -193,4 +218,4 @@ We're working on it. Comedy is hard. Thanks for exploring the frontier with us.
 
 **Cursor:** Run `/cellcog-setup` to install and authenticate.
 **OpenClaw:** Run `clawhub install cellcog` for SDK setup.
-**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See https://cellcog.ai for SDK docs.
+**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.

@@ -1,97 +1,372 @@
 ---
 name: cellcog
-description: "CellCog SDK patterns and reference. How to use create_chat, file handling (SHOW_FILE/GENERATE_FILE), chat modes, timeouts, and credits. Attach this skill for cross-cutting SDK guidance."
+description: "Any-input to any-output AI sub-agent. Research, images, video, audio, music, podcasts, documents, spreadsheets, dashboards, 3D models, diagrams, and code in one request. Agent-to-agent protocol with multi-step iteration. Install first for SDK setup and delivery modes."
 ---
+# CellCog - Any-to-Any for Agents
 
-# CellCog — SDK Reference for Cursor
+## The Power of Any-to-Any
+
+CellCog is the only AI that truly handles **any input → any output** in a single request. No tool chaining. No orchestration complexity. One call, multiple deliverables.
+
+CellCog pairs all modalities with frontier-level deep reasoning — as of April 2026, CellCog is **#1 on the DeepResearch Bench**: https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard
+
+### Work With Multiple Files, Any Format
+
+Reference as many documents as you need—all at once:
+
+```python
+prompt = """
+Analyze all of these together:
+<SHOW_FILE>/data/q4_earnings.pdf</SHOW_FILE>
+<SHOW_FILE>/data/competitor_analysis.pdf</SHOW_FILE>
+<SHOW_FILE>/data/market_research.xlsx</SHOW_FILE>
+<SHOW_FILE>/recordings/customer_interview.mp3</SHOW_FILE>
+<SHOW_FILE>/designs/product_mockup.png</SHOW_FILE>
+
+Give me a comprehensive market positioning analysis based on all these inputs.
+"""
+```
+
+File paths must be absolute and enclosed in `<SHOW_FILE>` tags. CellCog understands PDFs, spreadsheets, images, audio, video, code files, and more.
+
+⚠️ **Without SHOW_FILE tags, CellCog only sees the path as text — not the file contents.**
+
+❌ `Analyze /data/sales.csv` — CellCog can't read the file
+✅ `Analyze <SHOW_FILE>/data/sales.csv</SHOW_FILE>` — CellCog reads it
+
+### Request Multiple Outputs, Different Modalities
+
+Ask for completely different output types in ONE request:
+
+```python
+prompt = """
+Based on this quarterly sales data:
+<SHOW_FILE>/data/sales_q4_2025.csv</SHOW_FILE>
+
+Create ALL of the following:
+1. A PDF executive summary report with charts
+2. An interactive HTML dashboard for the leadership team
+3. A 60-second video presentation for the all-hands meeting
+4. A slide deck for the board presentation
+5. An Excel file with the underlying analysis and projections
+"""
+```
+
+CellCog handles the entire workflow — analyzing, generating, and delivering all outputs with consistent insights across every format.
+
+⚠️ **Be explicit about output artifacts.** Without explicit artifact language, CellCog may respond with text analysis instead of generating a file.
+
+❌ `"Quarterly earnings analysis for AAPL"` — could produce text or any format
+✅ `"Create a PDF report and an interactive HTML dashboard analyzing AAPL quarterly earnings."` — CellCog creates actual deliverables
+
+**Your sub-agent for quality work.** Depth, accuracy, and real deliverables.
+
+---
 
 ## Quick Start
 
+### Setup
+
 ```python
 from cellcog import CellCogClient
+```
 
-client = CellCogClient(agent_provider="cursor")
+If import fails:
+```bash
+pip install cellcog
+```
+
+### Authentication
+
+**Environment variable (recommended):** Set `CELLCOG_API_KEY` — the SDK picks it up automatically:
+```bash
+export CELLCOG_API_KEY="sk_..."
+```
+
+Get API key from: https://cellcog.ai/profile?tab=api-keys
+
+```python
+status = client.get_account_status()
+print(status)  # {"configured": True, "email": "user@example.com", ...}
+```
+
+### Agent Provider
+
+`agent_provider` is **required** when creating a `CellCogClient`. It identifies which agent framework is calling CellCog — not your individual agent's name, but the platform/tool you're running inside.
+
+Examples: `"openclaw"`, `"claude-code"`, `"cursor"`, `"aider"`, `"windsurf"`, `"perplexity"`, `"hermes"`, `"script"` (for standalone scripts).
+
+### OpenClaw Agents
+
+Fire-and-forget — your agent stays free while CellCog works:
+
+```python
+client = CellCogClient(agent_provider="openclaw")
 result = client.create_chat(
-    prompt="Your task description here",
+    prompt="Research quantum computing advances in 2026",
+    notify_session_key="agent:main:main",  # OpenClaw session key
+    task_label="quantum-research",         # Label for notifications
+    chat_mode="agent",
+)
+# Returns IMMEDIATELY — daemon delivers results to your session when done
+```
+
+Requires `sessions_send` enabled on your gateway — see OpenClaw Reference below.
+
+### All Other Agents (Cursor, Claude Code, etc.)
+
+Blocks until done — simplest pattern:
+
+```python
+client = CellCogClient(agent_provider="cursor")  # or "claude-code", "aider", "script", etc.
+result = client.create_chat(
+    prompt="Research quantum computing advances in 2026",
+    task_label="quantum-research",
+    chat_mode="agent",
+)
+# Blocks until done — result contains everything
+print(result["message"])
+```
+
+### Credit Usage
+
+CellCog orchestrates 21+ frontier foundation models. Credit consumption is unpredictable and varies by task complexity. Credits used are reported in every completion notification.
+
+---
+
+## Creating Tasks
+
+### Notify on Completion (OpenClaw — Fire-and-Forget)
+
+Returns immediately. A background daemon monitors via WebSocket and delivers results to your session when done. Your agent stays free to take new instructions, start other tasks, or continue working.
+
+```python
+result = client.create_chat(
+    prompt="Your task description",
+    notify_session_key="agent:main:main",   # Required — your OpenClaw session key
+    task_label="my-task",                   # Label shown in notifications
+    chat_mode="agent",
+)
+```
+
+**Requires** OpenClaw Gateway with `sessions_send` enabled (disabled by default since OpenClaw 2026.4). See OpenClaw Reference below for one-time setup.
+
+### Wait for Completion (Universal)
+
+Blocks until CellCog finishes. Works with any agent — OpenClaw, Cursor, Claude Code, or any Python environment.
+
+```python
+result = client.create_chat(
+    prompt="Your task description",
     task_label="my-task",
     chat_mode="agent",
-    timeout=1800,  # 30 min default. Use 3600 for complex jobs.
+    timeout=1800,                           # 30 min (default). Use 3600 for complex jobs.
 )
-print(result["message"])  # Always print the full message
+print(result["message"])
+print(result["status"])                     # "completed" | "timeout"
 ```
+
+### When to Use Which
+
+| Scenario | Best Mode | Why |
+|----------|-----------|-----|
+| OpenClaw + long task + stay free | **Notify** | Agent keeps working, gets notified when done |
+| OpenClaw + chaining steps (research → summarize → PDF) | **Wait** | Each step feeds the next — simpler sequential workflows |
+| OpenClaw + quick task | **Either** | Both return fast for simple tasks |
+| Non-OpenClaw agent | **Wait** | Only option — no `sessions_send` available |
+
+**Notify mode** is more productive (agent never blocks) but requires gateway configuration.
+**Wait mode** is simpler to reason about, but blocks your agent for the duration.
+
+### Continuing a Conversation
+
+```python
+# Wait mode (default)
+result = client.send_message(
+    chat_id="abc123",
+    message="Focus on hardware advances specifically",
+)
+
+# Notify mode (OpenClaw)
+result = client.send_message(
+    chat_id="abc123",
+    message="Focus on hardware advances specifically",
+    notify_session_key="agent:main:main",
+    task_label="continue-research",
+)
+```
+
+### Resuming After Timeout
+
+If `create_chat()` or `wait_for_completion()` times out, CellCog is still working. The timeout response includes recent progress:
+
+```python
+completion = client.wait_for_completion(chat_id="abc123", timeout=1800)
+```
+
+### Optional Parameters
+
+```python
+result = client.create_chat(
+    prompt="...",
+    task_label="...",
+    chat_mode="agent",                      # See Chat Modes below
+    project_id="...",                       # install project-cog for details
+    agent_role_id="...",                    # install project-cog for details
+    enable_cowork=True,                     # install cowork-cog for details
+    cowork_working_directory="/Users/...",  # install cowork-cog for details
+)
+```
+
+---
 
 ## Response Shape
 
-Every SDK method returns:
+Every SDK method returns the same shape:
+
 ```python
 {
     "chat_id": str,        # CellCog chat ID
     "is_operating": bool,  # True = still working, False = done
-    "status": str,         # "completed" | "timeout" | "operating"
-    "message": str,        # THE printable message — always print in full
+    "status": str,         # "completed" | "tracking" | "timeout" | "operating"
+    "message": str,        # THE printable message — always print this in full
 }
 ```
 
-## File Handling
+**⚠️ Always print the entire `result["message"]`.** Truncating or summarizing it will lose critical information including generated file paths, credits used, and follow-up instructions.
 
-**Send files to CellCog** — wrap paths in SHOW_FILE tags (absolute paths required):
+### Utility Methods
+
+**`get_history(chat_id)`** — Full chat history (when original delivery was missed or you need to review). Returns the same shape; if still operating, `message` shows progress so far.
+
+```python
+result = client.get_history(chat_id="abc123")
+```
+
+**`get_status(chat_id)`** — Lightweight status check (no history fetch):
+
+```python
+status = client.get_status(chat_id="abc123")
+print(status["is_operating"])  # True/False
+```
+
+---
+
+## Chat Modes
+
+| Mode | Best For | Speed | Min Credits |
+|------|----------|-------|-------------|
+| `"agent"` | Most tasks — images, audio, dashboards, spreadsheets, presentations | Fast (seconds to minutes) | 100 |
+| `"agent core"` | Coding, co-work, terminal operations | Fast | 50 |
+| `"agent team"` | Deep research & multi-angled reasoning across every modality | Slower (5-60 min) | 500 |
+| `"agent team max"` | High-stakes work where extra reasoning depth justifies the cost | Slowest | 2,000 |
+
+- **`"agent"` (default)** — Most versatile. Handles most tasks excellently, including deep research when guided.
+- **`"agent core"`** — Lightweight context for code, terminal, and file operations. Multimedia tools load on demand. Requires Co-work (CellCog Desktop). See `code-cog`.
+- **`"agent team"`** — A team of agents that debates, cross-validates, and delivers comprehensive results. The only platform with deep reasoning across every modality.
+- **`"agent team max"`** — Same Agent Team with all settings maxed. Quality gain is incremental (5-10%) but meaningful for costly decisions.
+
+---
+
+## Working with Files
+
+### Input: SHOW_FILE
+
+Include local file paths in your prompt with `<SHOW_FILE>` tags (absolute paths required):
+
 ```python
 prompt = """
-Analyze this data:
+Analyze this sales data and create a report:
 <SHOW_FILE>/path/to/sales.csv</SHOW_FILE>
 """
 ```
 
-**Request output files** — use GENERATE_FILE tags:
+### Output: GENERATE_FILE
+
+Use `<GENERATE_FILE>` tags to specify where output files should be stored on your machine. Essential for deterministic workflows where the next step needs to know the file path in advance.
+
 ```python
 prompt = """
-Create a PDF report:
+Create a PDF report on Q4 earnings:
 <GENERATE_FILE>/workspace/reports/q4_analysis.pdf</GENERATE_FILE>
 """
 ```
 
-## Chat Modes
+Output downloads to the specified path instead of default `~/.cellcog/chats/{chat_id}/`.
 
-| Mode | Best For | Speed |
-|------|----------|-------|
-| `"agent"` | Most tasks — images, audio, dashboards, spreadsheets | Fast |
-| `"agent team"` | Deep research, multi-angled reasoning | Slower (5-60 min) |
-| `"agent team max"` | High-stakes work, maximum depth | Slowest |
+### File Downloads
 
-## Follow-Up Messages
+The SDK automatically downloads files from CellCog responses:
+- **If you used `GENERATE_FILE` tags:** Files download to the path you specified
+- **Otherwise:** Files download to `~/.cellcog/chats/{chat_id}/`
+
+Downloaded file paths appear in `result["message"]`. The SDK tracks seen messages — files are only downloaded once.
+
+**If you missed files or need to re-sync:**
+```python
+result = client.get_history(chat_id="abc123")
+```
+`get_history()` re-processes the entire chat and downloads any missed files to their original destinations.
+
+---
+
+## Tips
+
+### ⚠️ CellCog Web Fallback
+
+Every chat is accessible at https://cellcog.ai. When work gets complex or the SDK hits issues, direct your human to the web platform to view, continue, or take over directly.
+
+---
+
+---
+
+## OpenClaw Reference
+
+### Session Keys
+
+The `notify_session_key` tells CellCog where to deliver results:
+
+| Context | Session Key |
+|---------|-------------|
+| Main agent | `"agent:main:main"` |
+| Sub-agent | `"agent:main:subagent:{uuid}"` |
+| Telegram DM | `"agent:main:telegram:dm:{id}"` |
+| Discord group | `"agent:main:discord:group:{id}"` |
+
+**Resilient delivery:** If your session ends before completion, results are automatically delivered to the parent session (e.g., sub-agent → main agent).
+
+### Sending Messages During Processing
+
+In notify mode, your agent is free — you can send additional instructions to an operating chat at any time:
 
 ```python
-result = client.send_message(
-    chat_id="abc123",
-    message="Now create a PDF summary of the findings",
-)
+client.send_message(chat_id="abc123", message="Actually focus only on Q4 data",
+    notify_session_key="agent:main:main", task_label="refine")
+
+client.send_message(chat_id="abc123", message="Stop operation",
+    notify_session_key="agent:main:main", task_label="cancel")
 ```
 
-## Long-Running Jobs
+In wait mode, your agent is blocked and cannot send messages until the current call returns.
 
-For complex tasks (videos, deep research), increase the timeout:
-```python
-result = client.create_chat(
-    prompt="Create a 3-minute cinematic video...",
-    task_label="video-project",
-    chat_mode="agent team",
-    timeout=3600,  # 60 minutes
-)
-```
+### Gateway Configuration (One-Time Setup)
 
-If a call times out, CellCog is still working. Resume with:
-```python
-result = client.wait_for_completion(chat_id="abc123", timeout=1800)
-```
+OpenClaw 2026.4+ blocks `sessions_send` by default. CellCog requires it for notify mode delivery. Run once:
 
-## Credits
-
-CellCog orchestrates 21+ foundation models. Credit consumption varies by task complexity and is reported in every response. Check your balance at https://cellcog.ai/profile.
-
-## If CellCog is not installed
-
-Run `/cellcog-setup` to install and authenticate, or manually:
 ```bash
-pip install -U cellcog
-export CELLCOG_API_KEY="sk_..."  # Get from https://cellcog.ai/profile?tab=api-keys
+openclaw config set gateway.tools.allow '["sessions_send", "sessions_list"]'
+```
+
+Then restart the gateway. The SDK checks this before creating the chat and raises `GatewayConfigError` if blocked — with the exact fix command in the error message.
+
+Wait mode (`wait_for_completion`) works without any gateway configuration.
+
+---
+
+## Support & Troubleshooting
+
+For error handling, recovery patterns, ticket submission, and daemon troubleshooting:
+
+```python
+docs = client.get_support_docs()
 ```

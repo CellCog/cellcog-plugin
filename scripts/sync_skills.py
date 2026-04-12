@@ -25,6 +25,7 @@ import sys
 # Skills to INCLUDE in the Cursor plugin (curated subset of 38 ClawHub skills)
 # Only high-level modality skills — no niche/marketing variants
 INCLUDED_SKILLS = {
+    'cellcog',            # Core skill — SDK reference, file handling, chat modes, timeouts
     'video-cog',          # Video production (covers cinematic, social, YouTube, lipsync)
     'image-cog',          # Image generation (covers branding, vectors, photos)
     'audio-cog',          # Speech, SFX, dialogue, podcasts
@@ -41,6 +42,10 @@ INCLUDED_SKILLS = {
     'game-cog',           # Game development
     'sticker-cog',        # Stickers
 }
+
+# Content to strip from cellcog skill during Cursor sync
+# The cross-selling grid references skills not in the Cursor plugin
+CELLCOG_STRIP_PATTERN = r'## What CellCog Can Do\n\n.*?\n---'
 
 
 def parse_frontmatter(content: str) -> tuple[dict, str, str]:
@@ -122,6 +127,15 @@ def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: boo
     if not fm.get('name'):
         print(f"  WARN {skill_name}: No name in frontmatter, using directory name")
         fm['name'] = skill_name
+    
+    # Strip cross-selling grid from cellcog skill (references skills not in Cursor plugin)
+    if skill_name == 'cellcog':
+        body = re.sub(
+            r'## What CellCog Can Do\n\n.*?\n---',
+            '---',
+            body,
+            flags=re.DOTALL
+        )
     
     # Build Cursor-compatible content
     cursor_frontmatter = build_cursor_frontmatter(fm)
