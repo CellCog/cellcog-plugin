@@ -18,7 +18,7 @@ In Cursor:
 ```
 cellcog/                        # The plugin
 ├── .cursor-plugin/
-│   └── plugin.json             # Plugin manifest (v1.1.1)
+│   └── plugin.json             # Plugin manifest (v1.0.0)
 ├── assets/
 │   └── logo.png                # CellCog logo (full-bleed, dark bg)
 ├── skills/                     # 16 curated skills
