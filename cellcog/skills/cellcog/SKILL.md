@@ -73,7 +73,7 @@ from cellcog import CellCogClient
 
 If import fails:
 ```bash
-pip install cellcog
+pip install -U cellcog
 ```
 
 ### Authentication
@@ -211,10 +211,6 @@ result = client.create_chat(
     prompt="...",
     task_label="...",
     chat_mode="agent",                      # See Chat Modes below
-    project_id="...",                       # install project-cog for details
-    agent_role_id="...",                    # install project-cog for details
-    enable_cowork=True,                     # install cowork-cog for details
-    cowork_working_directory="/Users/...",  # install cowork-cog for details
 )
 ```
 

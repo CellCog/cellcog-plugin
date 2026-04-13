@@ -47,6 +47,13 @@ INCLUDED_SKILLS = {
 # The cross-selling grid references skills not in the Cursor plugin
 CELLCOG_STRIP_PATTERN = r'## What CellCog Can Do\n\n.*?\n---'
 
+# Lines to strip from cellcog skill body (references to skills not in Cursor plugin)
+CELLCOG_STRIP_LINES = [
+    'install project-cog for details',
+    'install cowork-cog for details',
+    'install code-cog for details',
+]
+
 
 def parse_frontmatter(content: str) -> tuple[dict, str, str]:
     """Parse YAML frontmatter from SKILL.md content.
@@ -128,7 +135,7 @@ def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: boo
         print(f"  WARN {skill_name}: No name in frontmatter, using directory name")
         fm['name'] = skill_name
     
-    # Strip cross-selling grid from cellcog skill (references skills not in Cursor plugin)
+    # Strip cross-selling grid and excluded skill references from cellcog skill
     if skill_name == 'cellcog':
         body = re.sub(
             r'## What CellCog Can Do\n\n.*?\n---',
@@ -136,6 +143,12 @@ def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: boo
             body,
             flags=re.DOTALL
         )
+        # Remove lines referencing skills not in the Cursor plugin
+        for strip_line in CELLCOG_STRIP_LINES:
+            body = '\n'.join(
+                line for line in body.split('\n')
+                if strip_line not in line
+            )
     
     # Build Cursor-compatible content
     cursor_frontmatter = build_cursor_frontmatter(fm)

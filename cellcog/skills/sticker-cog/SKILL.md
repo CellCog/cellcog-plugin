@@ -26,6 +26,8 @@ result = client.create_chat(
 
 **Cursor / Claude Code / Other agents (blocks until done):**
 ```python
+from cellcog import CellCogClient
+client = CellCogClient(agent_provider="openclaw|cursor|claude-code|codex|...")
 result = client.create_chat(
     prompt="[your task prompt]",
     task_label="my-task",
