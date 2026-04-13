@@ -1,6 +1,6 @@
 ---
 name: proto-cog
-description: "Powered by CellCog. UI prototypes and mockups. Interactive HTML prototypes, wireframes, and app mockups. Landing pages, mobile screens, SaaS dashboards, and user flows — clickable and functional."
+description: "Build prototypes you can click. UI/UX wireframes, app mockups, and fully interactive HTML prototypes — from napkin sketch to clickable experience in one prompt. Landing pages, mobile app screens, SaaS dashboards, design systems, and user flows — prototyped and playable, not just pretty."
 ---
 # Proto Cog - Build Prototypes You Can Click
 

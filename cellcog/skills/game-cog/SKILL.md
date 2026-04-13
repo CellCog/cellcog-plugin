@@ -1,6 +1,6 @@
 ---
 name: game-cog
-description: "Powered by CellCog. Game development assets and prototypes. Character art, sprites, tilesets, music, UI elements, 3D models, game design documents, and playable HTML prototypes. Maintains character consistency across assets."
+description: "Other tools generate sprites. CellCog builds game worlds. #1 on DeepResearch Bench (Apr 2026) for deep game design reasoning — character-consistent art, sprites, tilesets, music, UI, 3D models, GDDs, level design, and game prototypes, all cohesive across every asset."
 ---
 # Game Cog - Build Game Worlds, Not Just Sprites
 

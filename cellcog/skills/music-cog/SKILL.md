@@ -1,6 +1,6 @@
 ---
 name: music-cog
-description: "Powered by CellCog. Music generation — 5 seconds to 10 minutes, instrumental or vocal. Cinematic scores, background tracks, podcast intros, game soundtracks, jingles, lo-fi beats, and songs with lyrics. Royalty-free."
+description: "Original music, fully yours. 5 seconds to 10 minutes using frontier music generation models. Instrumental and vocal tracks with perfect vocals. Cinematic scores, background tracks, podcast intros, game soundtracks, ambient soundscapes, jingles, lo-fi beats, orchestral compositions, songs with lyrics."
 ---
 # Music Cog - Original Music, Fully Yours
 
