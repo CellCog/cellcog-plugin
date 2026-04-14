@@ -22,7 +22,7 @@ result = client.create_chat(
 )
 ```
 
-**Cursor / Claude Code / Other agents (blocks until done):**
+**All agents except OpenClaw (blocks until done):**
 ```python
 from cellcog import CellCogClient
 client = CellCogClient(agent_provider="openclaw|cursor|claude-code|codex|...")
@@ -185,6 +185,6 @@ All 3D models are delivered as **GLB files** (binary glTF) — the universal web
 
 ## If CellCog is not installed
 
-**Cursor:** Run `/cellcog-setup` to install and authenticate.
-**OpenClaw:** Run `clawhub install cellcog` for SDK setup.
-**Other agents:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.
+Run `/cellcog-setup` (or `/cellcog:cellcog-setup` depending on your tool) to install and authenticate.
+**OpenClaw users:** Run `clawhub install cellcog` instead.
+**Manual setup:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.
