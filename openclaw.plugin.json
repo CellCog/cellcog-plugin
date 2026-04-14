@@ -1,0 +1,14 @@
+{
+  "id": "cellcog",
+  "name": "CellCog",
+  "description": "Any-to-any AI sub-agent — generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, and stickers from natural language prompts.",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "apiKey": {
+        "type": "string",
+        "description": "CellCog API key (get from https://cellcog.ai/profile?tab=api-keys)"
+      }
+    }
+  }
+}
