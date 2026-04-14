@@ -1,6 +1,6 @@
 ---
 name: data-cog
-description: "AI data analysis and visualization powered by CellCog. Upload CSVs and get charts, dashboards, statistical reports, and clean data back. Data cleaning, exploratory analysis, hypothesis testing, ML model evaluation, dataset profiling, and data visualization. Full Python access. #1 on DeepResearch Bench (Apr 2026). Analyzes everything, presents it beautifully."
+description: "AI data analysis and visualization powered by CellCog. Data cleaning, exploratory analysis, hypothesis testing, statistical reports, ML model evaluation, dataset profiling, charts, dashboards. Upload CSVs and get analysis back with full Python access."
 ---
 # Data Cog - Your Data Has Answers, CellCog Finds Them
 

@@ -1,6 +1,6 @@
 ---
 name: diagram-cog
-description: "AI diagram generator — flowcharts, system architecture, mind maps, org charts, ER diagrams, sequence diagrams, Gantt charts, network diagrams. Describe your system in plain English, get interactive zoomable diagrams or print-ready PDFs. No Visio, no Lucidchart. Powered by CellCog's frontier coding agent and app deployment infrastructure."
+description: "AI diagram generation powered by CellCog. Flowcharts, system architecture, mind maps, org charts, ER diagrams, sequence diagrams, Gantt charts, network diagrams. Describe your system in plain English, get interactive diagrams or print-ready PDFs."
 ---
 # Diagram Cog - Describe It in Words, Get It as a Diagram
 

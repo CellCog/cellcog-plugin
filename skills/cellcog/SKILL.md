@@ -1,6 +1,6 @@
 ---
 name: cellcog
-description: "Any-input to any-output AI sub-agent — research, images, video, audio, music, podcasts, documents, spreadsheets, dashboards, 3D models, diagrams, and code in one request. Agent-to-agent protocol with multi-step iteration for high accuracy. #1 on DeepResearch Bench. Deep reasoning meets all modalities so all your work gets done, not just code. Install first for SDK setup and delivery modes."
+description: "Any-to-any AI sub-agent — research, images, video, audio, music, podcasts, documents, spreadsheets, dashboards, 3D models, diagrams, and code in one request. Agent-to-agent protocol with multi-step iteration for high accuracy. #1 on DeepResearch Bench (Apr 2026) — deep reasoning meets all modalities, so all your work gets done, not just code."
 ---
 # CellCog - Any-to-Any for Agents
 

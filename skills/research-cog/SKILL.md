@@ -1,6 +1,6 @@
 ---
 name: research-cog
-description: "Deep research agent powered by CellCog. Market research, competitive analysis, investment research, academic research, due diligence, literature reviews with citations. Multi-source synthesis across hundreds of sources. #1 on DeepResearch Bench (Apr 2026)."
+description: "AI deep research powered by CellCog. Market research, competitive analysis, investment research, academic research, due diligence, literature reviews with citations, financial analysis, crypto research, news intelligence. Multi-source synthesis across hundreds of sources. #1 on DeepResearch Bench (Apr 2026)."
 ---
 # Research Cog - Deep Research Powered by CellCog
 

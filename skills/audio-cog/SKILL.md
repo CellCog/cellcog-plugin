@@ -1,6 +1,6 @@
 ---
 name: audio-cog
-description: "AI audio generation and text-to-speech powered by CellCog. Three voice providers (OpenAI, ElevenLabs, MiniMax), voice cloning, avatar voices, sound effects generation, music creation up to 10 minutes. Professional voiceover, narration, and audio production with AI."
+description: "AI audio generation and text-to-speech powered by CellCog. Voiceover, narration, voice cloning, avatar voices, sound effects, music, podcasts, dialogue. Three voice providers (OpenAI, ElevenLabs, MiniMax). Professional audio production from text prompts."
 ---
 # Audio Cog - AI Audio Generation Powered by CellCog
 
