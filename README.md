@@ -1,73 +1,91 @@
-# CellCog Cursor Plugin
+# CellCog — Any-to-Any AI Sub-Agent Plugin
 
-This repository contains the [CellCog](https://cellcog.ai) plugin for the [Cursor](https://cursor.com) marketplace.
+Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more — all from natural language prompts inside your coding agent.
 
-## What is CellCog?
+CellCog orchestrates 21+ foundation models so you can produce rich media deliverables without leaving your IDE.
 
-CellCog is an any-to-any AI sub-agent that generates images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more — all from natural language prompts.
+**Works with:** [Cursor](https://cursor.com) · [Claude Code](https://code.claude.com) · [OpenCode](https://opencode.ai) · Any [Open Plugins](https://open-plugins.com) conformant tool
 
-## Installation
+## Quick Start
 
-In Cursor:
+### 1. Install the Plugin
+
+**Cursor:**
 ```
 /add-plugin cellcog
 ```
 
+**Claude Code:**
+```bash
+claude plugin install https://github.com/CellCog/cellcog-cursor-plugin
+```
+
+**Other tools:** Clone or point your tool's plugin loader at this repo.
+
+### 2. Install the CellCog Python SDK
+
+```bash
+pip install -U cellcog
+export CELLCOG_API_KEY="sk_..."  # Get from https://cellcog.ai/profile?tab=api-keys
+```
+
+Or run `/cellcog-setup` (or `/cellcog:cellcog-setup`) for guided installation.
+
+### 3. Use CellCog
+
+Ask your coding agent to generate any rich media — the plugin automatically routes tasks to CellCog:
+
+> "Create a 30-second marketing video for our new fitness app"
+
+> "Research quantum computing advances in 2026 with citations"
+
+> "Design logo concepts and a one-pager PDF for my coffee shop"
+
+## Skills
+
+| Skill | What It Does |
+|-------|-------------|
+| `video-cog` | Video production — marketing, explainers, lipsync, cinematic |
+| `image-cog` | Image generation — photos, illustrations, logos, vectors |
+| `audio-cog` | Speech, voiceover, sound effects, dialogue, podcasts |
+| `music-cog` | Original music — any genre, any duration, royalty-free |
+| `research-cog` | Deep research with citations |
+| `docs-cog` | PDF and document generation |
+| `slides-cog` | Presentations and slide decks |
+| `spreadsheets-cog` | Spreadsheets with formulas and charts |
+| `proto-cog` | UI prototypes and mockups |
+| `3d-cog` | 3D model generation |
+| `meme-cog` | Meme generation |
+| `diagram-cog` | Flowcharts, architecture, mind maps |
+| `data-cog` | Data analysis and visualization |
+| `game-cog` | Game assets, GDDs, playable prototypes |
+| `sticker-cog` | Sticker packs and custom emoji |
+| `cellcog` | SDK reference — create_chat, files, modes, timeouts, credits |
+
 ## Plugin Structure
 
+This plugin follows the [Open Plugins](https://open-plugins.com) standard for cross-tool compatibility.
+
 ```
-cellcog/                        # The plugin
-├── .cursor-plugin/
-│   └── plugin.json             # Plugin manifest (v1.0.0)
-├── assets/
-│   └── logo.png                # CellCog logo (full-bleed, dark bg)
-├── skills/                     # 16 curated skills
-│   ├── cellcog/                # Core — SDK reference, file handling, chat modes
-│   ├── video-cog/              # Video production
-│   ├── image-cog/              # Image generation
-│   ├── audio-cog/              # Audio, speech, podcasts
-│   ├── music-cog/              # Music generation
-│   ├── research-cog/           # Deep research
-│   ├── docs-cog/               # Document generation
-│   ├── slides-cog/             # Presentations
-│   ├── spreadsheets-cog/       # Spreadsheets
-│   ├── proto-cog/              # UI prototypes
-│   ├── 3d-cog/                 # 3D models
-│   ├── meme-cog/               # Memes
-│   ├── diagram-cog/            # Diagrams
-│   ├── data-cog/               # Data analysis
-│   ├── game-cog/               # Game development
-│   └── sticker-cog/            # Stickers
-├── rules/
-│   └── cellcog-routing.mdc     # Routes tasks to CellCog
-├── commands/
-│   └── cellcog-setup.md        # /cellcog-setup (install + auth)
-└── README.md                   # Plugin documentation
+cellcog-cursor-plugin/
+├── .plugin/plugin.json           # Vendor-neutral manifest
+├── .cursor-plugin/plugin.json    # Cursor manifest
+├── .claude-plugin/plugin.json    # Claude Code manifest
+├── assets/logo.png               # Plugin logo
+├── skills/                       # 16 curated skills
+├── rules/cellcog-routing.mdc     # Auto-routes tasks to CellCog
+├── commands/cellcog-setup.md     # /cellcog-setup (install + auth)
+├── CHANGELOG.md
+├── LICENSE
+└── README.md
 ```
 
-## Development
+## Links
 
-### Syncing Skills from Monorepo
-
-Skills are authored in the CellCog monorepo (38 skills) and a curated subset of 16 is synced to this repo:
-
-```bash
-python3 scripts/sync_skills.py
-```
-
-The sync script strips ClawHub-specific YAML frontmatter (keeping only `name` and `description`) and applies an `INCLUDED_SKILLS` whitelist. The `cellcog` core skill also has its cross-selling grid stripped during sync.
-
-### Updating the Icon
-
-The plugin icon is generated from the CellCog light logo on a dark background (full-bleed, 88% logo scale):
-
-```bash
-# From the monorepo — regenerate all icons including Cursor
-python3 electron/cellcog-desktop/scripts/generate_icons.py
-
-# Copy the Cursor-specific icon (full-bleed, no macOS padding) to this repo
-cp electron/cellcog-desktop/build/icon-cursor.png cellcog/assets/logo.png
-```
+- **Website**: https://cellcog.ai
+- **SDK**: https://pypi.org/project/cellcog/
+- **API Keys**: https://cellcog.ai/profile?tab=api-keys
+- **Open Plugins Spec**: https://open-plugins.com
 
 ## License
 

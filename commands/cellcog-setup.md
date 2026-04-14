@@ -17,13 +17,13 @@ If installed, skip to **Step 2**. If not found, install it:
 pip install -U cellcog
 ```
 
-Note: Use the same Python interpreter that Cursor uses. If you're in a virtual environment, make sure it's activated.
+Note: Use the same Python interpreter your coding agent uses. If you're in a virtual environment, make sure it's activated.
 
 ## Step 2: Check authentication
 
 ```python
 from cellcog import CellCogClient
-client = CellCogClient(agent_provider="cursor")
+client = CellCogClient(agent_provider="cursor")  # or "claude-code", "opencode", etc.
 status = client.get_account_status()
 print(status)
 ```
@@ -37,7 +37,7 @@ If the status shows `"configured": false` or the command fails with an authentic
 export CELLCOG_API_KEY="sk_..."
 ```
 
-For persistent setup, add the export to `~/.zshrc` or `~/.bashrc`, or use Cursor's environment settings.
+For persistent setup, add the export to `~/.zshrc` or `~/.bashrc`, or configure it in your coding agent's environment settings.
 
 Then re-run the check above.
 
@@ -48,7 +48,7 @@ import cellcog
 print(f"CellCog SDK version: {cellcog.__version__}")
 
 from cellcog import CellCogClient
-client = CellCogClient(agent_provider="cursor")
+client = CellCogClient(agent_provider="cursor")  # or "claude-code", "opencode", etc.
 status = client.get_account_status()
 print(f"Authenticated as: {status.get('email', 'unknown')}")
 print("CellCog is ready to use!")

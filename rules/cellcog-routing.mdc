@@ -7,13 +7,13 @@ Use CellCog when the user needs: images, videos, audio, music, PDFs, presentatio
 
 Do NOT use CellCog for: code editing, git, terminal commands, file operations, or project navigation — handle these natively.
 
-If the CellCog Python SDK is not installed, run `/cellcog-setup` to install and authenticate.
+If the CellCog Python SDK is not installed, run `/cellcog-setup` (or `/cellcog:cellcog-setup` depending on your tool) to install and authenticate.
 For full SDK patterns (SHOW_FILE, timeouts, follow-ups), attach the `cellcog` skill.
 
 Quick start:
 ```python
 from cellcog import CellCogClient
-client = CellCogClient(agent_provider="cursor")
+client = CellCogClient(agent_provider="cursor|claude-code|opencode|...")
 result = client.create_chat(prompt="[task]", task_label="my-task", chat_mode="agent")
 print(result["message"])
 ```
