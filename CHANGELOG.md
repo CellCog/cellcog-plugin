@@ -1,12 +1,23 @@
 # Changelog
 
-All notable changes to the CellCog Cursor plugin will be documented in this file.
+All notable changes to the CellCog plugin will be documented in this file.
 
-## [1.0.0] - 2026-04-12
+## [2.0.0] - 2026-04-14
 
-### Initial Release
+### Restructured to Open Plugins Standard
 
-CellCog plugin for the Cursor marketplace — delegate creative, research, and document tasks to CellCog from within Cursor.
+Universal plugin for all conformant coding agents — Cursor, Claude Code, OpenCode, and more.
+
+**Breaking changes:**
+- Moved all components from `cellcog/` subdirectory to repo root (Open Plugins standard)
+- Removed `marketplace.json` (not needed for single-plugin repos)
+- Repo renamed from `cellcog-cursor-plugin` to `cellcog-plugin`
+
+**New:**
+- Added vendor-neutral manifest at `.plugin/plugin.json`
+- Added Claude Code manifest at `.claude-plugin/plugin.json`
+- All skills, rules, and commands are now agent-agnostic
+- Recovery sections updated to universal format across all 16 skills
 
 **Skills (16):**
 - `cellcog` — Core SDK reference (create_chat, file handling, chat modes, timeouts, credits)
@@ -30,3 +41,9 @@ CellCog plugin for the Cursor marketplace — delegate creative, research, and d
 - `/cellcog-setup` command for one-step SDK installation and authentication
 - Routing rule for automatic task delegation
 - CellCog Python SDK integration (`pip install -U cellcog`)
+
+## [1.0.0] - 2026-04-12
+
+### Initial Release
+
+CellCog plugin for the Cursor marketplace — delegate creative, research, and document tasks to CellCog from within your coding agent.

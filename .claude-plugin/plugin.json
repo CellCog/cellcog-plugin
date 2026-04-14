@@ -1,13 +1,12 @@
 {
   "name": "cellcog",
   "displayName": "CellCog",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Powered by CellCog. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more — from natural language prompts. Any input, any deliverable.",
   "author": {
     "name": "CellCog",
     "email": "support@cellcog.ai"
   },
-  "publisher": "CellCog",
   "homepage": "https://cellcog.ai",
   "repository": "https://github.com/CellCog/cellcog-plugin",
   "license": "MIT",
