@@ -1,7 +1,7 @@
 {
   "name": "@cellcog/openclaw-plugin",
-  "version": "2.0.0",
-  "description": "CellCog — any-to-any AI sub-agent plugin for OpenClaw. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, and more.",
+  "version": "2.0.1",
+  "description": "CellCog \u2014 any-to-any AI sub-agent plugin for OpenClaw. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, and more.",
   "type": "module",
   "private": true,
   "license": "MIT",
@@ -16,9 +16,21 @@
     "url": "https://github.com/CellCog/cellcog-plugin"
   },
   "keywords": [
-    "openclaw", "openclaw-plugin", "cellcog", "ai-agent", "sub-agent",
-    "image-generation", "video-generation", "pdf", "research", "music",
-    "spreadsheet", "3d-model", "multi-modal", "any-to-any", "deep-research"
+    "openclaw",
+    "openclaw-plugin",
+    "cellcog",
+    "ai-agent",
+    "sub-agent",
+    "image-generation",
+    "video-generation",
+    "pdf",
+    "research",
+    "music",
+    "spreadsheet",
+    "3d-model",
+    "multi-modal",
+    "any-to-any",
+    "deep-research"
   ],
   "files": [
     "skills/",

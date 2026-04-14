@@ -1,8 +1,8 @@
 {
   "name": "cellcog",
   "displayName": "CellCog",
-  "version": "2.0.0",
-  "description": "Powered by CellCog. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more — from natural language prompts. Any input, any deliverable.",
+  "version": "2.0.1",
+  "description": "Powered by CellCog. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more \u2014 from natural language prompts. Any input, any deliverable.",
   "author": {
     "name": "CellCog",
     "email": "support@cellcog.ai"
@@ -12,10 +12,23 @@
   "license": "MIT",
   "logo": "assets/logo.png",
   "keywords": [
-    "image-generation", "video-generation", "pdf", "presentation",
-    "research", "podcast", "music", "spreadsheet", "dashboard",
-    "3d-model", "meme", "ai-agent", "sub-agent", "any-to-any",
-    "multi-modal", "cellcog", "deep-research"
+    "image-generation",
+    "video-generation",
+    "pdf",
+    "presentation",
+    "research",
+    "podcast",
+    "music",
+    "spreadsheet",
+    "dashboard",
+    "3d-model",
+    "meme",
+    "ai-agent",
+    "sub-agent",
+    "any-to-any",
+    "multi-modal",
+    "cellcog",
+    "deep-research"
   ],
   "skills": "./skills/",
   "rules": "./rules/",

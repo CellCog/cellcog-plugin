@@ -2,6 +2,17 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.0.1] - 2026-04-14
+
+### Optimized Skill Descriptions
+
+- Rewrite all 16 skill descriptions for search and agent discovery
+- Lead with search-optimized terms (AI [category] powered by CellCog)
+- Remove marketing copy, competitive claims, and emotional hooks
+- Limit #1 DeepResearch Bench claim to cellcog hub and research-cog only
+- Add subcategory keywords to parent skills for broader search coverage
+- Added OpenClaw native plugin support (openclaw.plugin.json + package.json)
+
 ## [2.0.0] - 2026-04-14
 
 ### Restructured to Open Plugins Standard
