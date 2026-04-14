@@ -17,7 +17,7 @@ CellCog orchestrates 21+ foundation models so you can produce rich media deliver
 
 **Claude Code:**
 ```bash
-claude plugin install https://github.com/CellCog/cellcog-cursor-plugin
+claude plugin install https://github.com/CellCog/cellcog-plugin
 ```
 
 **Other tools:** Clone or point your tool's plugin loader at this repo.
@@ -67,7 +67,7 @@ Ask your coding agent to generate any rich media — the plugin automatically ro
 This plugin follows the [Open Plugins](https://open-plugins.com) standard for cross-tool compatibility.
 
 ```
-cellcog-cursor-plugin/
+cellcog-plugin/
 ├── .plugin/plugin.json           # Vendor-neutral manifest
 ├── .cursor-plugin/plugin.json    # Cursor manifest
 ├── .claude-plugin/plugin.json    # Claude Code manifest

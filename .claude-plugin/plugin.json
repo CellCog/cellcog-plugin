@@ -9,7 +9,7 @@
   },
   "publisher": "CellCog",
   "homepage": "https://cellcog.ai",
-  "repository": "https://github.com/CellCog/cellcog-cursor-plugin",
+  "repository": "https://github.com/CellCog/cellcog-plugin",
   "license": "MIT",
   "logo": "assets/logo.png",
   "keywords": [
