@@ -1,18 +1,28 @@
 #!/usr/bin/env python3
 """
-Sync CellCog skills from the monorepo to the Cursor plugin repo.
+Sync CellCog skills from the monorepo to the Open Plugins plugin repo.
 
 Reads SKILL.md files from the monorepo's openclaw_skills directory,
 strips ClawHub-specific YAML frontmatter fields (keeping only name
-and description which both Cursor and ClawHub support), and writes
-the result to the plugin repo's skills directory.
+and description which all agent tools support), and writes the result
+to the plugin repo's skills directory.
+
+This script is the bridge between the golden copy (monorepo) and the
+Open Plugins distribution (this repo). The golden copy lives in:
+    monorepo/md/cellcog/openclaw_skills/
+
+The plugin repo follows the Open Plugins standard and works with:
+    - Cursor (.cursor-plugin/plugin.json)
+    - Claude Code (.claude-plugin/plugin.json)
+    - OpenCode (.plugin/plugin.json)
+    - Any conformant Open Plugins host
 
 Usage:
     python3 scripts/sync_skills.py [--source PATH] [--target PATH] [--dry-run]
 
 Defaults:
     --source: ../monorepo/md/cellcog/openclaw_skills
-    --target: ./cellcog/skills
+    --target: ./skills
 """
 
 import argparse
@@ -22,7 +32,7 @@ import shutil
 import sys
 
 
-# Skills to INCLUDE in the Cursor plugin (curated subset of 38 ClawHub skills)
+# Skills to INCLUDE in the Open Plugins plugin (curated subset of 38 ClawHub skills)
 # Only high-level modality skills — no niche/marketing variants
 INCLUDED_SKILLS = {
     'cellcog',            # Core skill — SDK reference, file handling, chat modes, timeouts
@@ -43,11 +53,11 @@ INCLUDED_SKILLS = {
     'sticker-cog',        # Stickers
 }
 
-# Content to strip from cellcog skill during Cursor sync
-# The cross-selling grid references skills not in the Cursor plugin
+# Content to strip from cellcog skill during sync
+# The cross-selling grid references skills not in the plugin
 CELLCOG_STRIP_PATTERN = r'## What CellCog Can Do\n\n.*?\n---'
 
-# Lines to strip from cellcog skill body (references to skills not in Cursor plugin)
+# Lines to strip from cellcog skill body (references to skills not in plugin)
 CELLCOG_STRIP_LINES = [
     'install project-cog for details',
     'install cowork-cog for details',
@@ -92,8 +102,12 @@ def parse_frontmatter(content: str) -> tuple[dict, str, str]:
     return fm, raw, body
 
 
-def build_cursor_frontmatter(fm: dict) -> str:
-    """Build a Cursor-compatible YAML frontmatter with only name and description."""
+def build_open_plugins_frontmatter(fm: dict) -> str:
+    """Build an Open Plugins-compatible YAML frontmatter with only name and description.
+    
+    The Open Plugins spec (and Cursor specifically) only supports name and description
+    in SKILL.md frontmatter. Unknown fields cause skills to fail silently in Cursor.
+    """
     lines = ['---']
     
     if 'name' in fm:
@@ -123,7 +137,7 @@ def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: boo
         return False
     
     if skill_name not in INCLUDED_SKILLS:
-        print(f"  SKIP {skill_name}: Not in Cursor plugin skill set")
+        print(f"  SKIP {skill_name}: Not in plugin skill set")
         return False
     
     with open(source_file, 'r', encoding='utf-8') as f:
@@ -143,16 +157,16 @@ def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: boo
             body,
             flags=re.DOTALL
         )
-        # Remove lines referencing skills not in the Cursor plugin
+        # Remove lines referencing skills not in the plugin
         for strip_line in CELLCOG_STRIP_LINES:
             body = '\n'.join(
                 line for line in body.split('\n')
                 if strip_line not in line
             )
     
-    # Build Cursor-compatible content
-    cursor_frontmatter = build_cursor_frontmatter(fm)
-    cursor_content = cursor_frontmatter + body
+    # Build Open Plugins-compatible content
+    open_plugins_frontmatter = build_open_plugins_frontmatter(fm)
+    plugin_content = open_plugins_frontmatter + body
     
     # Write to target
     target_dir = os.path.join(target_path, skill_name)
@@ -164,18 +178,18 @@ def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: boo
     
     os.makedirs(target_dir, exist_ok=True)
     with open(target_file, 'w', encoding='utf-8') as f:
-        f.write(cursor_content)
+        f.write(plugin_content)
     
     print(f"  SYNC {skill_name}")
     return True
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Sync CellCog skills to Cursor plugin')
+    parser = argparse.ArgumentParser(description='Sync CellCog skills to Open Plugins plugin repo')
     parser.add_argument('--source', default=None,
                         help='Source skills directory (default: auto-detect from monorepo)')
     parser.add_argument('--target', default=None,
-                        help='Target skills directory (default: ./cellcog/skills)')
+                        help='Target skills directory (default: ./skills)')
     parser.add_argument('--dry-run', action='store_true',
                         help='Show what would be synced without writing files')
     
@@ -195,7 +209,7 @@ def main():
     if args.target:
         target = args.target
     else:
-        target = os.path.join(repo_root, 'cellcog', 'skills')
+        target = os.path.join(repo_root, 'skills')
     
     if not os.path.isdir(source):
         print(f"ERROR: Source directory not found: {source}")
