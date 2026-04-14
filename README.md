@@ -4,7 +4,7 @@ Generate images, videos, PDFs, presentations, research reports, music, spreadshe
 
 CellCog orchestrates 21+ foundation models so you can produce rich media deliverables without leaving your IDE.
 
-**Works with:** [Cursor](https://cursor.com) · [Claude Code](https://code.claude.com) · [OpenCode](https://opencode.ai) · Any [Open Plugins](https://open-plugins.com) conformant tool
+**Works with:** [Cursor](https://cursor.com) · [Claude Code](https://code.claude.com) · [OpenClaw](https://openclaw.ai) · [OpenCode](https://opencode.ai) · Any [Open Plugins](https://open-plugins.com) conformant tool
 
 ## Quick Start
 
@@ -18,6 +18,11 @@ CellCog orchestrates 21+ foundation models so you can produce rich media deliver
 **Claude Code:**
 ```bash
 claude plugin install https://github.com/CellCog/cellcog-plugin
+```
+
+**OpenClaw:**
+```bash
+openclaw plugins install https://github.com/CellCog/cellcog-plugin
 ```
 
 **Other tools:** Clone or point your tool's plugin loader at this repo.
@@ -68,9 +73,11 @@ This plugin follows the [Open Plugins](https://open-plugins.com) standard for cr
 
 ```
 cellcog-plugin/
-├── .plugin/plugin.json           # Vendor-neutral manifest
+├── .plugin/plugin.json           # Vendor-neutral manifest (Open Plugins)
 ├── .cursor-plugin/plugin.json    # Cursor manifest
 ├── .claude-plugin/plugin.json    # Claude Code manifest
+├── openclaw.plugin.json          # OpenClaw manifest
+├── package.json                  # OpenClaw package metadata
 ├── assets/logo.png               # Plugin logo
 ├── skills/                       # 16 curated skills
 ├── rules/cellcog-routing.mdc     # Auto-routes tasks to CellCog
