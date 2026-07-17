@@ -1,6 +1,6 @@
 ---
 name: cellcog
-description: "Any-to-any AI sub-agent — research, images, video, audio, music, podcasts, documents, spreadsheets, dashboards, 3D models, diagrams, and code in one request. Agent-to-agent protocol with multi-step iteration for high accuracy. #1 on DeepResearch Bench (Apr 2026) — deep reasoning meets all modalities, so all your work gets done, not just code."
+description: "Any-to-any AI sub-agent — research, images, video, audio, music, podcasts, avatars, voice cloning, documents, spreadsheets, dashboards, 3D models, diagrams, and code in one request. Agent-to-agent protocol with multi-step iteration for high accuracy. #1 on DeepResearch Bench (Apr 2026) — deep reasoning meets all modalities, so all your work gets done, not just code."
 ---
 # CellCog - Any-to-Any for Agents
 
@@ -8,7 +8,7 @@ description: "Any-to-any AI sub-agent — research, images, video, audio, music,
 
 CellCog is the only AI that truly handles **any input → any output** in a single request. No tool chaining. No orchestration complexity. One call, multiple deliverables.
 
-CellCog pairs all modalities with frontier-level deep reasoning — as of April 2026, CellCog is **#1 on the DeepResearch Bench**: https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard
+CellCog pairs all modalities with frontier-level deep reasoning — as of July 2026, CellCog is **#1 on the DeepResearch Bench** (rankings change frequently; see the live leaderboard for the latest): https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard
 
 ### Work With Multiple Files, Any Format
 
@@ -33,6 +33,12 @@ File paths must be absolute and enclosed in `<SHOW_FILE>` tags. CellCog understa
 
 ❌ `Analyze /data/sales.csv` — CellCog can't read the file
 ✅ `Analyze <SHOW_FILE>/data/sales.csv</SHOW_FILE>` — CellCog reads it
+
+### Think of SHOW_FILE like reference files
+
+Just like Nano Banana accepts reference images, CellCog accepts reference files of any type — PDFs, spreadsheets, audio, code, images — as inputs the model reads during a task. Same mental model as any multimodal AI attachment.
+
+**Only attach what you intend to share.** Anything inside a `<SHOW_FILE>` tag is uploaded to CellCog. Don't wrap credentials, private keys, `.env` files, SSH keys, or other sensitive material in SHOW_FILE tags — the same way you wouldn't paste them into Nano Banana, ChatGPT, or any other AI service's file upload.
 
 ### Request Multiple Outputs, Different Modalities
 
@@ -71,10 +77,12 @@ CellCog handles the entire workflow — analyzing, generating, and delivering al
 from cellcog import CellCogClient
 ```
 
-If import fails:
+If import fails, install the official CellCog Python SDK:
 ```bash
 pip install -U cellcog
 ```
+
+`cellcog` is the official Python SDK maintained by CellCog AI Inc. Source: https://github.com/CellCog/cellcog_python · Package: https://pypi.org/project/cellcog/
 
 ### Authentication
 
@@ -110,8 +118,6 @@ result = client.create_chat(
 )
 # Returns IMMEDIATELY — daemon delivers results to your session when done
 ```
-
-Requires `sessions_send` enabled on your gateway — see OpenClaw Reference below.
 
 ### All Other Agents (Cursor, Claude Code, etc.)
 
@@ -149,8 +155,6 @@ result = client.create_chat(
 )
 ```
 
-**Requires** OpenClaw Gateway with `sessions_send` enabled (disabled by default since OpenClaw 2026.4). See OpenClaw Reference below for one-time setup.
-
 ### Wait for Completion (Universal)
 
 Blocks until CellCog finishes. Works with any agent — OpenClaw, Cursor, Claude Code, or any Python environment.
@@ -173,9 +177,9 @@ print(result["status"])                     # "completed" | "timeout"
 | OpenClaw + long task + stay free | **Notify** | Agent keeps working, gets notified when done |
 | OpenClaw + chaining steps (research → summarize → PDF) | **Wait** | Each step feeds the next — simpler sequential workflows |
 | OpenClaw + quick task | **Either** | Both return fast for simple tasks |
-| Non-OpenClaw agent | **Wait** | Only option — no `sessions_send` available |
+| Non-OpenClaw agent | **Wait** | Notify mode is OpenClaw-only |
 
-**Notify mode** is more productive (agent never blocks) but requires gateway configuration.
+**Notify mode** is more productive (agent never blocks).
 **Wait mode** is simpler to reason about, but blocks your agent for the duration.
 
 ### Continuing a Conversation
@@ -344,18 +348,6 @@ client.send_message(chat_id="abc123", message="Stop operation",
 ```
 
 In wait mode, your agent is blocked and cannot send messages until the current call returns.
-
-### Gateway Configuration (One-Time Setup)
-
-OpenClaw 2026.4+ blocks `sessions_send` by default. CellCog requires it for notify mode delivery. Run once:
-
-```bash
-openclaw config set gateway.tools.allow '["sessions_send", "sessions_list"]'
-```
-
-Then restart the gateway. The SDK checks this before creating the chat and raises `GatewayConfigError` if blocked — with the exact fix command in the error message.
-
-Wait mode (`wait_for_completion`) works without any gateway configuration.
 
 ---
 

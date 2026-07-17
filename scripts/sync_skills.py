@@ -36,21 +36,21 @@ import sys
 # Only high-level modality skills — no niche/marketing variants
 INCLUDED_SKILLS = {
     'cellcog',            # Core skill — SDK reference, file handling, chat modes, timeouts
-    'video-cog',          # Video production (covers cinematic, social, YouTube, lipsync)
-    'image-cog',          # Image generation (covers branding, vectors, photos)
-    'audio-cog',          # Speech, SFX, dialogue, podcasts
-    'music-cog',          # Music generation
-    'research-cog',       # Deep research (covers finance, crypto, news)
-    'docs-cog',           # Documents (covers resumes, legal)
-    'slides-cog',         # Presentations
-    'spreadsheets-cog',   # Spreadsheets
-    'proto-cog',          # Prototypes, UI mockups
-    '3d-cog',             # 3D models
-    'meme-cog',           # Memes
-    'diagram-cog',        # Diagrams
-    'data-cog',           # Data analysis
-    'game-cog',           # Game development
-    'sticker-cog',        # Stickers
+    'video-generation-cellcog',          # Video production (covers cinematic, social, YouTube, lipsync)
+    'image-generation-cellcog',          # Image generation (covers branding, vectors, photos)
+    'audio-generation-cellcog',          # Speech, SFX, dialogue, podcasts
+    'music-generation-cellcog',          # Music generation
+    'deep-research-cellcog',       # Deep research (covers finance, crypto, news)
+    'pdf-document-generation-cellcog',           # Documents (covers resumes, legal)
+    'presentation-slides-cellcog',         # Presentations
+    'excel-spreadsheet-cellcog',   # Spreadsheets
+    'ui-prototype-wireframe-cellcog',          # Prototypes, UI mockups
+    '3d-model-generation-cellcog',             # 3D models
+    'meme-generator-cellcog',           # Memes
+    'diagram-flowchart-cellcog',        # Diagrams
+    'data-analysis-cellcog',           # Data analysis
+    'game-asset-generation-cellcog',           # Game development
+    'sticker-generator-cellcog',        # Stickers
 }
 
 # Content to strip from cellcog skill during sync

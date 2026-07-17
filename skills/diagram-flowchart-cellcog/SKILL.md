@@ -1,8 +1,8 @@
 ---
-name: diagram-cog
-description: "AI diagram generation powered by CellCog. Flowcharts, system architecture, mind maps, org charts, ER diagrams, sequence diagrams, Gantt charts, network diagrams. Describe your system in plain English, get interactive diagrams or print-ready PDFs."
+name: diagram-flowchart-cellcog
+description: "AI diagram and flowchart generation powered by CellCog. Flowcharts, system architecture, mind maps, org charts, ER diagrams, sequence diagrams, Gantt charts, network diagrams. Describe your system in plain English, get interactive diagrams or print-ready PDFs."
 ---
-# Diagram Cog - Describe It in Words, Get It as a Diagram
+# Diagram & Flowchart - Describe It in Words, Get It as a Diagram
 
 Describe your system, process, or idea in plain English — CellCog produces professional, interactive diagrams you can share with a URL.
 

@@ -1,8 +1,8 @@
 ---
-name: slides-cog
-description: "AI presentation and slide deck generation powered by CellCog. Pitch decks, keynotes, business presentations, educational slides, investor decks — PDF or native PPTX. Research-backed content with professional slide design, charts, and layouts."
+name: presentation-slides-cellcog
+description: "AI presentation slides and deck generation powered by CellCog. Pitch decks, keynotes, business presentations, educational slides, investor decks — PDF or native PPTX. Research-backed content with professional slide design, charts, and layouts."
 ---
-# Slides Cog - Content Worth Presenting, Design Worth Looking At
+# Presentation Slides - Content Worth Presenting, Design Worth Looking At
 
 **Great slides need two things: content worth presenting and design worth looking at.** CellCog takes both seriously.
 

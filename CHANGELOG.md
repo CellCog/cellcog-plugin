@@ -2,6 +2,36 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.1.0] - 2026-07-17
+
+### Keyword Skill Slugs (ClawHub search migration)
+
+All 15 capability skills renamed from short `-cog` slugs to literal-keyword slugs
+(`<keyword-phrase>-cellcog`) to match ClawHub's slug-token-first search ranking.
+The `cellcog` hub skill is unchanged.
+
+| Old slug | New slug |
+|---|---|
+| `video-cog` | `video-generation-cellcog` |
+| `image-cog` | `image-generation-cellcog` |
+| `audio-cog` | `audio-generation-cellcog` |
+| `music-cog` | `music-generation-cellcog` |
+| `research-cog` | `deep-research-cellcog` |
+| `docs-cog` | `pdf-document-generation-cellcog` |
+| `slides-cog` | `presentation-slides-cellcog` |
+| `spreadsheets-cog` | `excel-spreadsheet-cellcog` |
+| `proto-cog` | `ui-prototype-wireframe-cellcog` |
+| `3d-cog` | `3d-model-generation-cellcog` |
+| `meme-cog` | `meme-generator-cellcog` |
+| `diagram-cog` | `diagram-flowchart-cellcog` |
+| `data-cog` | `data-analysis-cellcog` |
+| `game-cog` | `game-asset-generation-cellcog` |
+| `sticker-cog` | `sticker-generator-cellcog` |
+
+- Skill directories, frontmatter `name:` fields, `package.json` skill paths, README, and `sync_skills.py` updated
+- Descriptions unchanged (already keyword-optimized in 2.0.1); only leading keyword phrases front-loaded where needed
+- Skill H1 titles updated to keyword names
+
 ## [2.0.1] - 2026-04-14
 
 ### Optimized Skill Descriptions

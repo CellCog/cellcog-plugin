@@ -1,8 +1,8 @@
 ---
-name: video-cog
+name: video-generation-cellcog
 description: "AI video generation and production powered by CellCog. Marketing videos, product demos, explainers, educational content, lipsync spokesperson videos, UGC, news reports, training materials, cinematic short films, social media reels, YouTube content. Up to 4-minute videos — scripted, voiced, scored, and edited from a single prompt."
 ---
-# Video Cog - AI Video Production
+# Video Generation - AI Video Production
 
 Long-form AI video production from a single prompt — scripted, voiced, scored, and edited automatically.
 

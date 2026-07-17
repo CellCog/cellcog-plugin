@@ -1,8 +1,8 @@
 ---
-name: 3d-cog
+name: 3d-model-generation-cellcog
 description: "AI 3D model generation powered by CellCog. Text-to-3D, image-to-3D — production-ready GLB files for games, AR/VR, e-commerce, and 3D printing. Game assets, product visualization, characters, props, environments, and batch generation."
 ---
-# 3D Cog - Turn Ideas Into 3D Models
+# 3D Model Generation - Turn Ideas Into 3D Models
 
 3D model generation from text descriptions or reference images.
 

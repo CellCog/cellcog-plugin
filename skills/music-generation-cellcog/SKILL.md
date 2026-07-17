@@ -1,8 +1,8 @@
 ---
-name: music-cog
+name: music-generation-cellcog
 description: "AI music generation powered by CellCog. Original instrumental and vocal tracks, 5 seconds to 10 minutes. Cinematic scores, background tracks, podcast intros, game soundtracks, ambient soundscapes, jingles, lo-fi beats, orchestral compositions, songs with lyrics. Royalty-free."
 ---
-# Music Cog - Original Music, Fully Yours
+# Music Generation - Original Music, Fully Yours
 
 Music generation — 5 seconds to 10 minutes. Instrumental and vocal tracks with high-quality AI vocals.
 

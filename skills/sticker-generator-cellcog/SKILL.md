@@ -1,8 +1,8 @@
 ---
-name: sticker-cog
-description: "AI sticker pack generation powered by CellCog. Custom stickers, emoji sets, WhatsApp stickers, Telegram stickers, Discord emoji, Slack reactions. Character-consistent expressions, transparent backgrounds, batch generation, platform-ready packaging."
+name: sticker-generator-cellcog
+description: "AI sticker generator and pack creation powered by CellCog. Custom stickers, emoji sets, WhatsApp stickers, Telegram stickers, Discord emoji, Slack reactions. Character-consistent expressions, transparent backgrounds, batch generation, platform-ready packaging."
 ---
-# Sticker Cog - One Character, Twenty Expressions, Perfect Consistency
+# Sticker Generator - One Character, Twenty Expressions, Perfect Consistency
 
 **One character. Twenty expressions. Every sticker looks like the same person.** That's the hard part — and that's what CellCog does better than anyone.
 

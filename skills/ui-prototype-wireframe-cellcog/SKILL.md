@@ -1,8 +1,8 @@
 ---
-name: proto-cog
-description: "AI UI prototyping powered by CellCog. Interactive HTML prototypes, wireframes, app mockups, landing pages, mobile screens, SaaS dashboards, design systems, user flows. From description to clickable prototype in one prompt."
+name: ui-prototype-wireframe-cellcog
+description: "AI UI prototype and wireframe generation powered by CellCog. Interactive HTML prototypes, wireframes, app mockups, landing pages, mobile screens, SaaS dashboards, design systems, user flows. From description to clickable prototype in one prompt."
 ---
-# Proto Cog - Build Prototypes You Can Click
+# UI Prototype & Wireframe - Build Prototypes You Can Click
 
 **Build prototypes you can click.** UI/UX wireframes, app mockups, and fully interactive HTML prototypes — from napkin sketch to clickable experience in one prompt.
 

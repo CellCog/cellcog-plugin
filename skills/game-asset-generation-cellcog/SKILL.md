@@ -1,8 +1,8 @@
 ---
-name: game-cog
-description: "AI game development powered by CellCog. Character-consistent art, sprites, tilesets, music, UI, 3D models, GDDs, level design, game prototypes. Cohesive game assets across every modality from a single prompt."
+name: game-asset-generation-cellcog
+description: "AI game asset generation and game development powered by CellCog. Character-consistent art, sprites, tilesets, music, UI, 3D models, GDDs, level design, game prototypes. Cohesive game assets across every modality from a single prompt."
 ---
-# Game Cog - Build Game Worlds, Not Just Sprites
+# Game Asset Generation - Build Game Worlds, Not Just Sprites
 
 Game development assets and prototypes with character consistency across all assets.
 
@@ -126,7 +126,7 @@ CellCog handles the full pipeline — describe what you want, and it generates o
 
 GLB output works with Unity, Unreal, Godot, Three.js, and Blender. Specify poly count and PBR materials for your target platform.
 
-For dedicated 3D generation workflows, also check out `3d-cog`.
+For dedicated 3D generation workflows, also check out `3d-model-generation-cellcog`.
 
 ### Sprites & Animation
 

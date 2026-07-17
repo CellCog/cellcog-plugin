@@ -50,21 +50,21 @@ Ask your coding agent to generate any rich media — the plugin automatically ro
 
 | Skill | What It Does |
 |-------|-------------|
-| `video-cog` | Video production — marketing, explainers, lipsync, cinematic |
-| `image-cog` | Image generation — photos, illustrations, logos, vectors |
-| `audio-cog` | Speech, voiceover, sound effects, dialogue, podcasts |
-| `music-cog` | Original music — any genre, any duration, royalty-free |
-| `research-cog` | Deep research with citations |
-| `docs-cog` | PDF and document generation |
-| `slides-cog` | Presentations and slide decks |
-| `spreadsheets-cog` | Spreadsheets with formulas and charts |
-| `proto-cog` | UI prototypes and mockups |
-| `3d-cog` | 3D model generation |
-| `meme-cog` | Meme generation |
-| `diagram-cog` | Flowcharts, architecture, mind maps |
-| `data-cog` | Data analysis and visualization |
-| `game-cog` | Game assets, GDDs, playable prototypes |
-| `sticker-cog` | Sticker packs and custom emoji |
+| `video-generation-cellcog` | Video production — marketing, explainers, lipsync, cinematic |
+| `image-generation-cellcog` | Image generation — photos, illustrations, logos, vectors |
+| `audio-generation-cellcog` | Speech, voiceover, sound effects, dialogue, podcasts |
+| `music-generation-cellcog` | Original music — any genre, any duration, royalty-free |
+| `deep-research-cellcog` | Deep research with citations |
+| `pdf-document-generation-cellcog` | PDF and document generation |
+| `presentation-slides-cellcog` | Presentations and slide decks |
+| `excel-spreadsheet-cellcog` | Spreadsheets with formulas and charts |
+| `ui-prototype-wireframe-cellcog` | UI prototypes and mockups |
+| `3d-model-generation-cellcog` | 3D model generation |
+| `meme-generator-cellcog` | Meme generation |
+| `diagram-flowchart-cellcog` | Flowcharts, architecture, mind maps |
+| `data-analysis-cellcog` | Data analysis and visualization |
+| `game-asset-generation-cellcog` | Game assets, GDDs, playable prototypes |
+| `sticker-generator-cellcog` | Sticker packs and custom emoji |
 | `cellcog` | SDK reference — create_chat, files, modes, timeouts, credits |
 
 ## Plugin Structure

@@ -1,8 +1,8 @@
 ---
-name: image-cog
+name: image-generation-cellcog
 description: "AI image generation and photo editing powered by CellCog. Text-to-image, image-to-image, consistent characters, product photography, reference-based generation, style transfer, sets of images, social media visuals, brand assets, stickers, comics, GIFs. Professional image creation with multiple AI models."
 ---
-# Image Cog - AI Image Generation Powered by CellCog
+# Image Generation - AI Image Creation Powered by CellCog
 
 Create professional images with AI - from single images to consistent character sets to product photography.
 

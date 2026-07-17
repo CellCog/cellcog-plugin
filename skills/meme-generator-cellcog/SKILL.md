@@ -1,8 +1,8 @@
 ---
-name: meme-cog
-description: "AI meme generation powered by CellCog. Memes, viral content, reaction images, internet humor. Audience targeting, trend research, and multi-angle generation for humor that lands."
+name: meme-generator-cellcog
+description: "AI meme generator powered by CellCog. Memes, viral content, reaction images, internet humor. Audience targeting, trend research, and multi-angle generation for humor that lands."
 ---
-# Meme Cog - Deep Reasoning Meets Internet Culture
+# Meme Generator - Deep Reasoning Meets Internet Culture
 
 Meme generation with audience targeting, trend research, and multi-angle humor.
 
@@ -210,7 +210,7 @@ What's still hard:
 - Knowing when NOT to explain a joke
 - Creating the next viral format
 
-**Use meme-cog as a collaborator, not a magic humor machine.** Your sense of what's funny + our generation capabilities = better results than either alone.
+**Use meme-generator-cellcog as a collaborator, not a magic humor machine.** Your sense of what's funny + our generation capabilities = better results than either alone.
 
 We're working on it. Comedy is hard. Thanks for exploring the frontier with us.
 

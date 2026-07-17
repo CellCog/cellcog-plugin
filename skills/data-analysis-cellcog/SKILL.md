@@ -1,8 +1,8 @@
 ---
-name: data-cog
+name: data-analysis-cellcog
 description: "AI data analysis and visualization powered by CellCog. Data cleaning, exploratory analysis, hypothesis testing, statistical reports, ML model evaluation, dataset profiling, charts, dashboards. Upload CSVs and get analysis back with full Python access."
 ---
-# Data Cog - Your Data Has Answers, CellCog Finds Them
+# Data Analysis - Your Data Has Answers, CellCog Finds Them
 
 Data analysis and visualization from uploaded files.
 
