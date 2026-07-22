@@ -262,7 +262,7 @@ print(status["is_operating"])  # True/False
 | `"agent team max"` | High-stakes work where extra reasoning depth justifies the cost | Slowest | 2,000 |
 
 - **`"agent"` (default)** — Most versatile. Handles most tasks excellently, including deep research when guided.
-- **`"agent core"`** — Lightweight context for code, terminal, and file operations. Multimedia tools load on demand. Requires Co-work (CellCog Desktop). See `code-cog`.
+- **`"agent core"`** — Lightweight context for code, terminal, and file operations. Multimedia tools load on demand. Requires Co-work (CellCog Desktop). See `coding-agent-cellcog`.
 - **`"agent team"`** — A team of agents that debates, cross-validates, and delivers comprehensive results. The only platform with deep reasoning across every modality.
 - **`"agent team max"`** — Same Agent Team with all settings maxed. Quality gain is incremental (5-10%) but meaningful for costly decisions.
 

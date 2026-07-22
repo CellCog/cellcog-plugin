@@ -59,9 +59,9 @@ CELLCOG_STRIP_PATTERN = r'## What CellCog Can Do\n\n.*?\n---'
 
 # Lines to strip from cellcog skill body (references to skills not in plugin)
 CELLCOG_STRIP_LINES = [
-    'install project-cog for details',
-    'install cowork-cog for details',
-    'install code-cog for details',
+    'install project-management-cellcog for details',
+    'install pair-programming-cellcog for details',
+    'install coding-agent-cellcog for details',
 ]
 
 

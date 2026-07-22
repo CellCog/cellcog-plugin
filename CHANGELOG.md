@@ -2,6 +2,24 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.2.0] - 2026-07-22
+
+### Slug Migration Wave 2 (remaining 13 skills)
+
+The 13 remaining ClawHub skills renamed to keyword slugs (`cine-cog` → `cinematic-video-cellcog`,
+`insta-cog` → `instagram-reels-tiktok-cellcog`, `tube-cog` → `youtube-video-cellcog`,
+`crypto-cog` → `crypto-research-cellcog`, `news-cog` → `news-briefing-cellcog`,
+`learn-cog` → `tutoring-education-cellcog`, `story-cog` → `creative-writing-cellcog`,
+`think-cog` → `brainstorming-strategy-cellcog`, `travel-cog` → `travel-planning-cellcog`,
+`avatar-cog` → `avatar-creation-cellcog`, `code-cog` → `coding-agent-cellcog`,
+`cowork-cog` → `pair-programming-cellcog`, `project-cog` → `project-management-cellcog`).
+None of these are plugin skills, but the `cellcog` hub skill's cross-references and
+`sync_skills.py` strip rules updated to match. All 38 CellCog skills now follow the
+`<keyword-phrase>-cellcog` formula.
+
+- Host manifests (`.plugin/`, `.claude-plugin/`, `.cursor-plugin/`) version-bumped
+  (they were still at 2.0.1 — missed in the 2.1.0 release)
+
 ## [2.1.0] - 2026-07-17
 
 ### Keyword Skill Slugs (ClawHub search migration)
