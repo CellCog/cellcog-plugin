@@ -2,6 +2,27 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.2.1] - 2026-07-22
+
+### OpenClaw Package Validation Fixes
+
+ClawHub's Plugin Inspector flagged the package (`0 errors, 1 warning` on 2.1.0);
+now validates clean (`clawhub package validate .` → PASS, 0 findings).
+
+- **`package-openclaw-entry-missing`**: `openclaw.extensions` used a legacy object
+  shape (`{id, kind, skills}`) that the current schema doesn't recognize as an
+  entrypoint. Per the OpenClaw SDK entry points contract, `extensions` is now an
+  array of entrypoint paths (`["./index.js"]`), backed by a new minimal
+  `index.js` (`definePluginEntry`, registers nothing — skills-only plugin).
+- Skill directories moved to `openclaw.plugin.json#skills` (the documented
+  manifest field: "Skill directories to load, relative to the plugin root").
+- **`package-install-metadata-incomplete`**: added `openclaw.install`
+  (`clawhubSpec`, `npmSpec`, `defaultChoice: "clawhub"`, `minHostVersion`).
+- **`package-npm-pack-unavailable`**: removed `private: true` so the npm
+  artifact can be packed; added `index.js` to `files`; declared `openclaw`
+  peer dependency.
+- Validator `reports/` output gitignored.
+
 ## [2.2.0] - 2026-07-22
 
 ### Slug Migration Wave 2 (remaining 13 skills)

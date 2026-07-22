@@ -1,9 +1,8 @@
 {
   "name": "@cellcog/openclaw-plugin",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "CellCog — any-to-any AI sub-agent plugin for OpenClaw. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, and more.",
   "type": "module",
-  "private": true,
   "license": "MIT",
   "author": {
     "name": "CellCog",
@@ -33,6 +32,7 @@
     "deep-research"
   ],
   "files": [
+    "index.js",
     "skills/",
     "rules/",
     "commands/",
@@ -41,28 +41,7 @@
   ],
   "openclaw": {
     "extensions": [
-      {
-        "id": "cellcog-skills",
-        "kind": "tool",
-        "skills": [
-          "skills/cellcog",
-          "skills/video-generation-cellcog",
-          "skills/image-generation-cellcog",
-          "skills/audio-generation-cellcog",
-          "skills/music-generation-cellcog",
-          "skills/deep-research-cellcog",
-          "skills/pdf-document-generation-cellcog",
-          "skills/presentation-slides-cellcog",
-          "skills/excel-spreadsheet-cellcog",
-          "skills/ui-prototype-wireframe-cellcog",
-          "skills/3d-model-generation-cellcog",
-          "skills/meme-generator-cellcog",
-          "skills/diagram-flowchart-cellcog",
-          "skills/data-analysis-cellcog",
-          "skills/game-asset-generation-cellcog",
-          "skills/sticker-generator-cellcog"
-        ]
-      }
+      "./index.js"
     ],
     "compat": {
       "pluginApi": ">=2026.3.24-beta.2",
@@ -71,6 +50,15 @@
     "build": {
       "openclawVersion": "2026.3.24-beta.2",
       "pluginSdkVersion": "2026.3.24-beta.2"
+    },
+    "install": {
+      "clawhubSpec": "@cellcog/openclaw-plugin",
+      "npmSpec": "@cellcog/openclaw-plugin",
+      "defaultChoice": "clawhub",
+      "minHostVersion": ">=2026.3.24-beta.2"
     }
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.3.24-beta.2"
   }
 }

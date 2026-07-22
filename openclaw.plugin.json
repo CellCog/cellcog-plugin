@@ -2,6 +2,24 @@
   "id": "cellcog",
   "name": "CellCog",
   "description": "Any-to-any AI sub-agent — generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, and stickers from natural language prompts.",
+  "skills": [
+    "skills/cellcog",
+    "skills/video-generation-cellcog",
+    "skills/image-generation-cellcog",
+    "skills/audio-generation-cellcog",
+    "skills/music-generation-cellcog",
+    "skills/deep-research-cellcog",
+    "skills/pdf-document-generation-cellcog",
+    "skills/presentation-slides-cellcog",
+    "skills/excel-spreadsheet-cellcog",
+    "skills/ui-prototype-wireframe-cellcog",
+    "skills/3d-model-generation-cellcog",
+    "skills/meme-generator-cellcog",
+    "skills/diagram-flowchart-cellcog",
+    "skills/data-analysis-cellcog",
+    "skills/game-asset-generation-cellcog",
+    "skills/sticker-generator-cellcog"
+  ],
   "configSchema": {
     "type": "object",
     "properties": {
