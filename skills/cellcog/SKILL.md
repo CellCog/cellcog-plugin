@@ -167,7 +167,7 @@ result = client.create_chat(
     timeout=1800,                           # 30 min (default). Use 3600 for complex jobs.
 )
 print(result["message"])
-print(result["status"])                     # "completed" | "timeout"
+print(result["status"])                     # "completed" | "operating" (+ timed_out=True if the wait gave up)
 ```
 
 ### When to Use Which
@@ -178,9 +178,11 @@ print(result["status"])                     # "completed" | "timeout"
 | OpenClaw + chaining steps (research → summarize → PDF) | **Wait** | Each step feeds the next — simpler sequential workflows |
 | OpenClaw + quick task | **Either** | Both return fast for simple tasks |
 | Non-OpenClaw agent | **Wait** | Notify mode is OpenClaw-only |
+| Orchestrating SEVERAL chats in parallel | **Send-only** | Fire all chats at once, then poll — the blocking default would hang on each chat's whole run |
 
 **Notify mode** is more productive (agent never blocks).
 **Wait mode** is simpler to reason about, but blocks your agent for the duration.
+**Send-only** (`delivery="send_only"`, works on `create_chat` AND `send_message`) returns the moment the chat/message is accepted — poll with `get_status()` (its `latest_update` field carries the agent's most recent progress line) and fetch results with `wait_for_completion()` or `get_history()`.
 
 ### Continuing a Conversation
 
@@ -214,9 +216,42 @@ completion = client.wait_for_completion(chat_id="abc123", timeout=1800)
 result = client.create_chat(
     prompt="...",
     task_label="...",
-    chat_mode="agent",                      # See Chat Modes below
+    chat_mode="agent",                      # See Chat Modes & Tiers below
+    chat_tier="max",                        # "flash" | "core" | "max" — omit for the SDK default
+    delivery="send_only",                   # fire-and-forget (see below); default blocks until done
+    enable_browse=True,                     # drive the user's REAL Chrome (Desktop + extension required)
+    browser_profile_id="Default",           # from client.get_browser_status()
+    enable_tools=True,                      # the user's connected SaaS tools (Gmail, Notion, ...)
+    tools_selection=["gmail", "notion"],    # toolkit slugs (omit for ALL); from client.list_toolkits()
 )
 ```
+
+### Enabling Browse & Tools
+
+Discover what's available on the user's account, then enable at chat creation:
+
+```python
+# Browse — discover Chrome profiles, enable with one
+status = client.get_browser_status()
+# status["available_profiles"]: [{"profileDir", "profileName", "hasExtension", "connected"}, ...]
+result = client.create_chat(
+    prompt="Open the analytics dashboard and screenshot this week's numbers",
+    enable_browse=True,
+    browser_profile_id=status["active_profile"]["profileDir"],
+)
+
+# Tools — discover connected toolkits, enable a selection (omit tools_selection for ALL)
+toolkits = client.list_toolkits(connected_only=True)   # [{"slug": "gmail", ...}, ...]
+result = client.create_chat(
+    prompt="Summarize this week's unread emails",
+    enable_tools=True,
+    tools_selection=["gmail"],   # TOOLKIT slugs; list_toolkit_tools("gmail") shows what it unlocks
+)
+```
+
+Browse requires CellCog Desktop + the Chrome extension and auto-enables co-work
+server-side. If Browse isn't available, `create_chat` fails fast with a clear error
+before any credits are spent.
 
 ---
 
@@ -228,7 +263,9 @@ Every SDK method returns the same shape:
 {
     "chat_id": str,        # CellCog chat ID
     "is_operating": bool,  # True = still working, False = done
-    "status": str,         # "completed" | "tracking" | "timeout" | "operating"
+    "status": str,         # "completed" | "tracking" | "accepted" | "operating"
+                           # (a wait that gave up returns status="operating" + timed_out=True —
+                           #  the chat is STILL running server-side; resume with wait_for_completion)
     "message": str,        # THE printable message — always print this in full
 }
 ```
@@ -252,19 +289,25 @@ print(status["is_operating"])  # True/False
 
 ---
 
-## Chat Modes
+## Chat Modes & Tiers
 
-| Mode | Best For | Speed | Min Credits |
+Every CellCog chat runs at a (mode, tier) operating point: `chat_mode` picks the agent, `chat_tier` picks the depth/spend.
+
+| Mode | Best For | Tiers | Min Credits |
 |------|----------|-------|-------------|
-| `"agent"` | Most tasks — images, audio, dashboards, spreadsheets, presentations | Fast (seconds to minutes) | 100 |
-| `"agent core"` | Coding, co-work, terminal operations | Fast | 50 |
-| `"agent team"` | Deep research & multi-angled reasoning across every modality | Slower (5-60 min) | 500 |
-| `"agent team max"` | High-stakes work where extra reasoning depth justifies the cost | Slowest | 2,000 |
+| `"agent"` | Most tasks — assets, documents, coding, full production pipelines | `"flash"` / `"core"` / `"max"` | 60 |
+| `"creative"` | Design-taste work — dashboards, UI, brand identity, writing, slides | `"core"` / `"max"` (no flash) | 60 |
+| `"team"` | Deep research ONLY — multi-source synthesis, cross-validation, citations | `"flash"` / `"core"` / `"max"` | 1,000 (max tier: 2,000) |
 
-- **`"agent"` (default)** — Most versatile. Handles most tasks excellently, including deep research when guided.
-- **`"agent core"`** — Lightweight context for code, terminal, and file operations. Multimedia tools load on demand. Requires Co-work (CellCog Desktop). See `coding-agent-cellcog`.
-- **`"agent team"`** — A team of agents that debates, cross-validates, and delivers comprehensive results. The only platform with deep reasoning across every modality.
-- **`"agent team max"`** — Same Agent Team with all settings maxed. Quality gain is incremental (5-10%) but meaningful for costly decisions.
+**Picking a tier in agent mode:**
+- **Omit `chat_tier`** → the SDK defaults to `"flash"` — right for simple asset generation and light tasks (fast, economical).
+- **Coding / co-work → `"max"`.** The SDK applies `"max"` automatically when `enable_cowork=True`.
+- **Heavy multi-step production** (video generation, data analysis, financial models, legal drafting) → `"max"`.
+- Quality disappointing on flash? Re-run the same prompt with `chat_tier="max"`.
+
+**Use `"team"` only for deep research.** Agent max is now strong enough for almost every other use case — including video generation, which historically needed team mode and no longer does.
+
+Legacy mode names — `"agent core"`, `"agent team"`, `"agent team max"` — keep working forever (the server maps them to their historical operating points).
 
 ---
 

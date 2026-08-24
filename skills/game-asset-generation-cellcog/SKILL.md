@@ -162,16 +162,16 @@ Make your game feel polished:
 
 ---
 
-## Chat Mode for Game Dev
+## Choosing Mode & Tier
 
-| Scenario | Recommended Mode |
-|----------|------------------|
-| Individual assets, sprites, character designs, UI elements | `"agent"` |
-| Full game concepts, complex world building, narrative design | `"agent team"` |
+| Scenario | Recommended |
+|----------|-------------|
+| Individual assets and small sets | `chat_mode="agent"` (defaults to the `"flash"` tier) |
+| Full game concepts, complex world building, style-consistent asset fleets | `chat_mode="agent", chat_tier="max"` |
 
-**Use `"agent"` for most game assets.** Characters, tilesets, UI elements execute well in agent mode.
+**The flash tier is the default and handles most game asset generation well** — fast and economical. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
 
-**Use `"agent team"` for game design depth** - full GDDs, complex narratives, or when you need multiple creative angles explored.
+Agent Team (`chat_mode="team"`) is reserved for deep research — don't use it for game asset generation.
 
 ---
 
@@ -242,6 +242,7 @@ Make your game feel polished:
 
 ## If CellCog is not installed
 
-Run `/cellcog-setup` (or `/cellcog:cellcog-setup` depending on your tool) to install and authenticate.
-**OpenClaw users:** Run `clawhub install cellcog` instead.
+**Claude Code, Cursor, Codex + 70 more agents:** `npx skills add cellcog/skills --skill cellcog`
+**OpenClaw:** `clawhub install cellcog`
+**CellCog plugin users:** run `/cellcog-setup` (or `/cellcog:cellcog-setup` depending on your tool)
 **Manual setup:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.
