@@ -200,6 +200,6 @@ Agent Team (`chat_mode="team"`) is reserved for deep research — don't use it f
 ## If CellCog is not installed
 
 **Claude Code, Cursor, Codex + 70 more agents:** `npx skills add cellcog/skills --skill cellcog`
-**OpenClaw:** `clawhub install cellcog`
+**OpenClaw:** `openclaw skills install @cellcog/cellcog`
 **CellCog plugin users:** run `/cellcog-setup` (or `/cellcog:cellcog-setup` depending on your tool)
 **Manual setup:** `pip install -U cellcog` and set `CELLCOG_API_KEY`. See the **cellcog** skill for SDK reference.
