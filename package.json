@@ -1,6 +1,6 @@
 {
   "name": "@cellcog/openclaw-plugin",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "CellCog — any-to-any AI sub-agent plugin for OpenClaw. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, and more.",
   "type": "module",
   "license": "MIT",

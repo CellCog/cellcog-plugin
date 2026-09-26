@@ -46,6 +46,17 @@ Ask your coding agent to generate any rich media — the plugin automatically ro
 
 > "Design logo concepts and a one-pager PDF for my coffee shop"
 
+## Remote MCP connector (Claude web, Desktop, Cowork, Claude Code, Cursor)
+
+The plugin also references CellCog's remote MCP server, so once it is installed the CellCog connector is available on every Claude surface. On first use you sign in with your own CellCog account (OAuth); no API key, nothing to install in a sandbox.
+
+- **Claude web / Desktop:** Settings > Connectors > Add custom connector > `https://cellcog.ai/mcp`
+- **Claude Code:** `claude mcp add --transport http cellcog https://cellcog.ai/mcp`
+- **Cursor and other MCP clients:** add `https://cellcog.ai/mcp` as a remote (streamable HTTP) server; sign in when asked
+- **Team / Enterprise admins:** distribute this plugin org-wide from Organization settings > Plugins: add it to your organization's own (private) marketplace as a `github` source `CellCog/cellcog-plugin`, or upload the plugin ZIP directly; every member still signs in as themselves and is billed on their own account. Claude Code users can also run `claude plugin marketplace add CellCog/cellcog-plugin` (this repo ships a `.claude-plugin/marketplace.json`).
+
+Tools: `cellcog_create_chat`, `cellcog_send_message`, `cellcog_request_upload` (an upload window for files on your computer), `cellcog_get_status`, `cellcog_get_result` (files come back as links that stay valid for 30 days and render inline in Claude web and Desktop), `cellcog_list_chats`, `cellcog_account`. Manage or disconnect connected apps at https://cellcog.ai/profile?tab=api-keys.
+
 ## Skills
 
 | Skill | What It Does |
@@ -66,6 +77,7 @@ Ask your coding agent to generate any rich media — the plugin automatically ro
 | `game-asset-generation-cellcog` | Game assets, GDDs, playable prototypes |
 | `sticker-generator-cellcog` | Sticker packs and custom emoji |
 | `cellcog` | SDK reference — create_chat, files, modes, timeouts, credits |
+
 
 ## Plugin Structure
 

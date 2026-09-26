@@ -2,6 +2,20 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.3.0] - 2026-09-17
+
+### Remote MCP connector
+
+- New `.mcp.json` at the plugin root referencing CellCog's remote MCP server
+  (`https://cellcog.ai/mcp`, streamable HTTP, OAuth sign-in with your own CellCog
+  account on first use). Installing the plugin makes the connector available on every
+  Claude surface (web, Desktop, Cowork, Claude Code); Cursor and other MCP clients can
+  add the same URL directly.
+- New `.claude-plugin/marketplace.json` so a Team / Enterprise Owner can distribute the
+  plugin org-wide from Organization settings > Plugins. Members sign in individually.
+- README: connector section (install paths, the six tools, where to disconnect).
+- Manifest versions bumped to 2.3.0.
+
 ## [2.2.1] - 2026-07-22
 
 ### OpenClaw Package Validation Fixes

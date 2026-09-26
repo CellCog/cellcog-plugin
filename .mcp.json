@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cellcog": {
+      "type": "http",
+      "url": "https://cellcog.ai/mcp"
+    }
+  }
+}

@@ -22,3 +22,6 @@ rad.json
 TestResults.xml
 __pycache__/
 reports/
+
+# macOS metadata (Claude directory scanner rejects it)
+.DS_Store
