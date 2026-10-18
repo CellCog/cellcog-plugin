@@ -4,6 +4,7 @@
   "description": "Any-to-any AI sub-agent — generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, and stickers from natural language prompts.",
   "skills": [
     "skills/cellcog",
+    "skills/ai-employees-cellcog",
     "skills/video-generation-cellcog",
     "skills/image-generation-cellcog",
     "skills/audio-generation-cellcog",

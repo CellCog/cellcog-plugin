@@ -287,6 +287,19 @@ status = client.get_status(chat_id="abc123")
 print(status["is_operating"])  # True/False
 ```
 
+**`get_result(chat_id=...)`** (SDK 2.5.0+): One-shot read that never waits: progress notes since your last read while the chat works, the final message and files once (delivered once; `again=True` re-reads). The same read the CellCog MCP connector's `cellcog_get_result` gives.
+
+---
+
+## Chat or AI Employee?
+
+CellCog has two ways to hand off work:
+
+- **A chat is a subagent for one task.** It only knows what you pass in and works out the rest from scratch. Use it for a one-off or throwaway job (one image, a set of videos, a deck, a research report) where all the context fits in your brief. It is the cheapest way to get one job done.
+- **An AI employee is a long-running teammate.** It keeps memory and skills you teach it, runs routines, has its own inbox, and its context is managed for you across days or months. Use it for a project you will prompt again (a web series, a content calendar, a client account). It costs more per task and pays back in consistency.
+
+Most of the work inside CellCog itself runs through AI employees. To instruct one from your agent (`list_employees`, `message_employee`, `get_result(employee_id=...)`, shifts), read the **ai-employees-cellcog** skill.
+
 ---
 
 ## Chat Modes & Tiers
@@ -296,7 +309,7 @@ Every CellCog chat runs at a (mode, tier) operating point: `chat_mode` picks the
 | Mode | Best For | Tiers | Min Credits |
 |------|----------|-------|-------------|
 | `"agent"` | Most tasks — assets, documents, coding, full production pipelines | `"flash"` / `"core"` / `"max"` | 60 |
-| `"creative"` | Design-taste work — dashboards, UI, brand identity, writing, slides | `"core"` / `"max"` (no flash) | 60 |
+| `"creative"` | Design-taste work — dashboards, UI, brand identity, writing, slides | `"flash"` / `"core"` / `"max"` | 60 |
 | `"team"` | Deep research ONLY — multi-source synthesis, cross-validation, citations | `"flash"` / `"core"` / `"max"` | 1,000 (max tier: 2,000) |
 
 **Picking a tier in agent mode:**

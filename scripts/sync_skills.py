@@ -17,41 +17,53 @@ The plugin repo follows the Open Plugins standard and works with:
     - OpenCode (.plugin/plugin.json)
     - Any conformant Open Plugins host
 
+The curated skill subset is NOT kept here. It is `plugin_skills` in the release manifest,
+monorepo/md/cellcog/distribution/manifest.json (Oct 18 2026: one source of truth for versions and
+the subset; runbook: RELEASE.md next to it). This script writes the subset into skills/ AND into
+openclaw.plugin.json#skills, and removes a skills/ folder whose skill left the subset.
+
 Usage:
-    python3 scripts/sync_skills.py [--source PATH] [--target PATH] [--dry-run]
+    python3 scripts/sync_skills.py [--source PATH] [--target PATH] [--manifest PATH] [--dry-run | --check]
+
+    --dry-run  show what would be synced without writing files
+    --check    exit 1 if skills/ or openclaw.plugin.json differs from what a sync would write (no writes)
 
 Defaults:
-    --source: ../monorepo/md/cellcog/openclaw_skills
-    --target: ./skills
+    --source:   ../monorepo/md/cellcog/openclaw_skills
+    --target:   ./skills
+    --manifest: ../monorepo/md/cellcog/distribution/manifest.json
+
+Exit codes: 0 done / in sync, 1 drift (--check), 2 error (missing manifest, source or skill).
 """
 
 import argparse
+import json
 import os
 import re
 import shutil
 import sys
 
 
-# Skills to INCLUDE in the Open Plugins plugin (curated subset of 38 ClawHub skills)
-# Only high-level modality skills — no niche/marketing variants
-INCLUDED_SKILLS = {
-    'cellcog',            # Core skill — SDK reference, file handling, chat modes, timeouts
-    'video-generation-cellcog',          # Video production (covers cinematic, social, YouTube, lipsync)
-    'image-generation-cellcog',          # Image generation (covers branding, vectors, photos)
-    'audio-generation-cellcog',          # Speech, SFX, dialogue, podcasts
-    'music-generation-cellcog',          # Music generation
-    'deep-research-cellcog',       # Deep research (covers finance, crypto, news)
-    'pdf-document-generation-cellcog',           # Documents (covers resumes, legal)
-    'presentation-slides-cellcog',         # Presentations
-    'excel-spreadsheet-cellcog',   # Spreadsheets
-    'ui-prototype-wireframe-cellcog',          # Prototypes, UI mockups
-    '3d-model-generation-cellcog',             # 3D models
-    'meme-generator-cellcog',           # Memes
-    'diagram-flowchart-cellcog',        # Diagrams
-    'data-analysis-cellcog',           # Data analysis
-    'game-asset-generation-cellcog',           # Game development
-    'sticker-generator-cellcog',        # Stickers
-}
+def load_included_skills(manifest_path: str) -> list[str]:
+    """The plugin's skill subset, in manifest order (`plugin_skills` of the release manifest)."""
+    if not os.path.isfile(manifest_path):
+        print(f"ERROR: release manifest not found: {manifest_path}")
+        print("  The plugin skill subset lives in the monorepo at md/cellcog/distribution/manifest.json")
+        print("  (`plugin_skills`). Check out the monorepo next to this repo, or pass --manifest PATH.")
+        sys.exit(2)
+    with open(manifest_path, 'r', encoding='utf-8') as f:
+        skills = json.load(f).get('plugin_skills')
+    if not isinstance(skills, list) or not skills or not all(isinstance(s, str) and s for s in skills):
+        print(f"ERROR: {manifest_path}: `plugin_skills` must be a non-empty list of skill slugs")
+        sys.exit(2)
+    if len(set(skills)) != len(skills):
+        print(f"ERROR: {manifest_path}: `plugin_skills` lists a skill twice")
+        sys.exit(2)
+    return skills
+
+
+# Set from the manifest in main(); sync_skill() reads it.
+INCLUDED_SKILLS: set[str] = set()
 
 # Content to strip from cellcog skill during sync
 # The cross-selling grid references skills not in the plugin
@@ -126,27 +138,17 @@ def build_open_plugins_frontmatter(fm: dict) -> str:
     return '\n'.join(lines) + '\n'
 
 
-def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: bool = False) -> bool:
-    """Sync a single skill from source to target.
-    
-    Returns True if the skill was synced, False if skipped.
-    """
+def render_skill(source_path: str, skill_name: str, quiet: bool = False) -> str:
+    """The plugin's SKILL.md for one golden skill (Open Plugins frontmatter + transformed body)."""
     source_file = os.path.join(source_path, skill_name, 'SKILL.md')
-    if not os.path.isfile(source_file):
-        print(f"  SKIP {skill_name}: No SKILL.md found")
-        return False
-    
-    if skill_name not in INCLUDED_SKILLS:
-        print(f"  SKIP {skill_name}: Not in plugin skill set")
-        return False
-    
     with open(source_file, 'r', encoding='utf-8') as f:
         content = f.read()
-    
+
     fm, raw_fm, body = parse_frontmatter(content)
-    
+
     if not fm.get('name'):
-        print(f"  WARN {skill_name}: No name in frontmatter, using directory name")
+        if not quiet:
+            print(f"  WARN {skill_name}: No name in frontmatter, using directory name")
         fm['name'] = skill_name
     
     # Strip cross-selling grid and excluded skill references from cellcog skill
@@ -166,22 +168,85 @@ def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: boo
     
     # Build Open Plugins-compatible content
     open_plugins_frontmatter = build_open_plugins_frontmatter(fm)
-    plugin_content = open_plugins_frontmatter + body
-    
+    return open_plugins_frontmatter + body
+
+
+def sync_skill(source_path: str, target_path: str, skill_name: str, dry_run: bool = False) -> bool:
+    """Sync a single skill from source to target.
+
+    Returns True if the skill was synced, False if skipped.
+    """
+    source_file = os.path.join(source_path, skill_name, 'SKILL.md')
+    if not os.path.isfile(source_file):
+        print(f"  SKIP {skill_name}: No SKILL.md found")
+        return False
+
+    if skill_name not in INCLUDED_SKILLS:
+        print(f"  SKIP {skill_name}: Not in plugin skill set")
+        return False
+
+    plugin_content = render_skill(source_path, skill_name)
+
     # Write to target
     target_dir = os.path.join(target_path, skill_name)
     target_file = os.path.join(target_dir, 'SKILL.md')
-    
+
     if dry_run:
         print(f"  SYNC {skill_name} (dry run)")
         return True
-    
+
     os.makedirs(target_dir, exist_ok=True)
     with open(target_file, 'w', encoding='utf-8') as f:
         f.write(plugin_content)
-    
+
     print(f"  SYNC {skill_name}")
     return True
+
+
+def stale_skill_dirs(target_path: str) -> list[str]:
+    """Skill folders in the plugin whose skill is no longer in the subset (removed by a sync)."""
+    if not os.path.isdir(target_path):
+        return []
+    return sorted(
+        d for d in os.listdir(target_path)
+        if not d.startswith('.')
+        and os.path.isfile(os.path.join(target_path, d, 'SKILL.md'))
+        and d not in INCLUDED_SKILLS
+    )
+
+
+def openclaw_manifest_text(manifest_file: str, skills: list[str]) -> tuple[str, str]:
+    """(current text, text with `skills` = the subset). OpenClaw loads exactly the folders listed there."""
+    with open(manifest_file, 'r', encoding='utf-8') as f:
+        current = f.read()
+    data = json.loads(current)
+    data['skills'] = [f'skills/{s}' for s in skills]
+    return current, json.dumps(data, indent=2, ensure_ascii=False) + '\n'
+
+
+def check(source: str, target: str, skills: list[str], openclaw_file: str) -> int:
+    """Read-only drift check: 0 when a sync would write nothing, else 1."""
+    drift = []
+    for skill in skills:
+        target_file = os.path.join(target, skill, 'SKILL.md')
+        if not os.path.isfile(target_file):
+            drift.append(f"  + {skill} (in the subset, not in the plugin yet)")
+            continue
+        with open(target_file, 'r', encoding='utf-8') as f:
+            if f.read() != render_skill(source, skill, quiet=True):
+                drift.append(f"  ~ {skill}")
+    for d in stale_skill_dirs(target):
+        drift.append(f"  - {d} (left the subset)")
+    if os.path.isfile(openclaw_file):
+        current, wanted = openclaw_manifest_text(openclaw_file, skills)
+        if current != wanted:
+            drift.append("  ~ openclaw.plugin.json#skills")
+    if drift:
+        print(f"DRIFT: {len(drift)} item(s) differ from golden + manifest")
+        print('\n'.join(drift))
+        return 1
+    print("Check: plugin skills match golden and the manifest subset. Clean.")
+    return 0
 
 
 def main():
@@ -190,35 +255,55 @@ def main():
                         help='Source skills directory (default: auto-detect from monorepo)')
     parser.add_argument('--target', default=None,
                         help='Target skills directory (default: ./skills)')
-    parser.add_argument('--dry-run', action='store_true',
-                        help='Show what would be synced without writing files')
-    
+    parser.add_argument('--manifest', default=None,
+                        help='Release manifest holding plugin_skills (default: ../monorepo/md/cellcog/distribution/manifest.json)')
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--dry-run', action='store_true',
+                      help='Show what would be synced without writing files')
+    mode.add_argument('--check', action='store_true',
+                      help='Exit 1 if skills/ or openclaw.plugin.json drifted (no writes)')
+
     args = parser.parse_args()
-    
+
     # Auto-detect paths relative to this script
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(script_dir)
-    
+    monorepo = os.path.join(os.path.dirname(repo_root), 'monorepo')
+
     if args.source:
         source = args.source
     else:
         # Try to find monorepo relative to plugin repo
-        monorepo = os.path.join(os.path.dirname(repo_root), 'monorepo')
         source = os.path.join(monorepo, 'md', 'cellcog', 'openclaw_skills')
-    
+
     if args.target:
         target = args.target
     else:
         target = os.path.join(repo_root, 'skills')
-    
+
+    manifest = args.manifest or os.path.join(monorepo, 'md', 'cellcog', 'distribution', 'manifest.json')
+    openclaw_file = os.path.join(repo_root, 'openclaw.plugin.json')
+
     if not os.path.isdir(source):
         print(f"ERROR: Source directory not found: {source}")
-        sys.exit(1)
-    
+        sys.exit(2)
+
+    subset = load_included_skills(manifest)
+    INCLUDED_SKILLS.clear()
+    INCLUDED_SKILLS.update(subset)
+    missing = [s for s in subset if not os.path.isfile(os.path.join(source, s, 'SKILL.md'))]
+    if missing:
+        print(f"ERROR: plugin_skills names skill(s) with no golden SKILL.md: {', '.join(missing)}")
+        sys.exit(2)
+
     print(f"Source: {source}")
     print(f"Target: {target}")
+    print(f"Manifest: {manifest}")
     print(f"Included: {len(INCLUDED_SKILLS)} skills")
     print()
+
+    if args.check:
+        sys.exit(check(source, target, subset, openclaw_file))
     
     # Get all skill directories
     skills = sorted([
@@ -239,7 +324,22 @@ def main():
             synced += 1
         else:
             skipped += 1
-    
+
+    for d in stale_skill_dirs(target):
+        if args.dry_run:
+            print(f"  REMOVE {d} (left the subset, dry run)")
+        else:
+            shutil.rmtree(os.path.join(target, d))
+            print(f"  REMOVE {d} (left the subset)")
+
+    if os.path.isfile(openclaw_file):
+        current, wanted = openclaw_manifest_text(openclaw_file, subset)
+        if current != wanted:
+            if not args.dry_run:
+                with open(openclaw_file, 'w', encoding='utf-8') as f:
+                    f.write(wanted)
+            print(f"  WRITE openclaw.plugin.json#skills ({len(subset)} skills){' (dry run)' if args.dry_run else ''}")
+
     print()
     print(f"Done: {synced} synced, {skipped} skipped")
 

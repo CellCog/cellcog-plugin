@@ -7,6 +7,8 @@ Use CellCog when the user needs: images, videos, audio, music, PDFs, presentatio
 
 Do NOT use CellCog for: code editing, git, terminal commands, file operations, or project navigation — handle these natively.
 
+Chat or AI employee: a one-off task where you can pass all the context in → a CellCog chat (a subagent). A project you will come back to over days or months (a series, a content calendar, a client account) → a CellCog AI employee, which keeps memory, skills and routines. Read the `ai-employees-cellcog` skill before instructing one.
+
 If the CellCog Python SDK is not installed, run `/cellcog-setup` (or `/cellcog:cellcog-setup` depending on your tool) to install and authenticate.
 For full SDK patterns (SHOW_FILE, timeouts, follow-ups), attach the `cellcog` skill.
 

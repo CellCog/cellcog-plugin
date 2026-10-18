@@ -2,6 +2,20 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.4.0] - 2026-10-18
+
+### AI employees
+
+- New skill `ai-employees-cellcog`: when to hand work to an AI employee instead of a chat,
+  and how to list, message, follow shifts and read results through the SDK or the MCP
+  connector.
+- `cellcog` skill: `get_result` (SDK 2.5.0) and a short chat or AI employee section.
+- Routing rule: a one-off task goes to a chat; a project you return to over days or months
+  goes to an AI employee.
+- README: all twelve MCP tools, including the four AI employee tools; the skills table and
+  the tree list 17 skills.
+- Manifest versions bumped to 2.4.0.
+
 ## [2.3.0] - 2026-09-17
 
 ### Remote MCP connector

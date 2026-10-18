@@ -55,7 +55,7 @@ The plugin also references CellCog's remote MCP server, so once it is installed 
 - **Cursor and other MCP clients:** add `https://cellcog.ai/mcp` as a remote (streamable HTTP) server; sign in when asked
 - **Team / Enterprise admins:** distribute this plugin org-wide from Organization settings > Plugins: add it to your organization's own (private) marketplace as a `github` source `CellCog/cellcog-plugin`, or upload the plugin ZIP directly; every member still signs in as themselves and is billed on their own account. Claude Code users can also run `claude plugin marketplace add CellCog/cellcog-plugin` (this repo ships a `.claude-plugin/marketplace.json`).
 
-Tools: `cellcog_create_chat`, `cellcog_send_message`, `cellcog_request_upload` (an upload window for files on your computer), `cellcog_get_status`, `cellcog_get_result` (files come back as links that stay valid for 30 days and render inline in Claude web and Desktop), `cellcog_list_chats`, `cellcog_account`. Manage or disconnect connected apps at https://cellcog.ai/profile?tab=api-keys.
+Twelve tools. For chats: `cellcog_create_chat`, `cellcog_send_message`, `cellcog_request_upload` (an upload window for files on your computer), `cellcog_get_status`, `cellcog_get_result` (files come back as links that stay valid for 30 days and render inline in Claude web and Desktop), `cellcog_stop_chat`, `cellcog_list_chats`, `cellcog_account`. For the AI employees you own or a teammate shared with you: `cellcog_list_employees`, `cellcog_get_employee`, `cellcog_message_employee`, `cellcog_get_employee_history`, and `cellcog_get_result` with an `employee_id` for the reply. Manage or disconnect connected apps at https://cellcog.ai/profile?tab=api-keys.
 
 ## Skills
 
@@ -76,6 +76,7 @@ Tools: `cellcog_create_chat`, `cellcog_send_message`, `cellcog_request_upload` (
 | `data-analysis-cellcog` | Data analysis and visualization |
 | `game-asset-generation-cellcog` | Game assets, GDDs, playable prototypes |
 | `sticker-generator-cellcog` | Sticker packs and custom emoji |
+| `ai-employees-cellcog` | AI employees: when to use one instead of a chat; list, message, follow shifts, read results |
 | `cellcog` | SDK reference — create_chat, files, modes, timeouts, credits |
 
 
@@ -91,7 +92,7 @@ cellcog-plugin/
 ├── openclaw.plugin.json          # OpenClaw manifest
 ├── package.json                  # OpenClaw package metadata
 ├── assets/logo.png               # Plugin logo
-├── skills/                       # 16 curated skills
+├── skills/                       # 17 curated skills
 ├── rules/cellcog-routing.mdc     # Auto-routes tasks to CellCog
 ├── commands/cellcog-setup.md     # /cellcog-setup (install + auth)
 ├── CHANGELOG.md
