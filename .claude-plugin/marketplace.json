@@ -7,14 +7,14 @@
   },
   "metadata": {
     "description": "CellCog for Claude: brief finished work (videos, images, PDFs, decks, research, spreadsheets, apps) to an AI agent from inside your Claude session and get the files back as links. Connects with your own CellCog account through the remote MCP server at https://cellcog.ai/mcp.",
-    "version": "2.4.0"
+    "version": "2.4.1"
   },
   "plugins": [
     {
       "name": "cellcog",
       "source": "./",
       "description": "Skills, routing rules and the CellCog remote MCP connector (https://cellcog.ai/mcp, sign in with your CellCog account on first use).",
-      "version": "2.4.0",
+      "version": "2.4.1",
       "author": {
         "name": "CellCog",
         "email": "support@cellcog.ai"

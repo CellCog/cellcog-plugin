@@ -4,6 +4,11 @@ description: "Any-to-any AI sub-agent — research, images, video, audio, music,
 ---
 # CellCog - Any-to-Any for Agents
 
+## SDK or MCP? Pick your way in first
+
+- **You run on a persistent machine** (you can `pip install` and keep files and environment variables between turns: Claude Code, Cursor, Codex, OpenClaw, a server): use the **Python SDK** below. It gives the better agent experience: send and move on, files saved straight to disk, state that survives restarts.
+- **No persistent machine** (Claude.ai, Claude Desktop, Cowork, other hosted chat apps), or the `cellcog_*` tools are already connected: use the **CellCog MCP connector** at `https://cellcog.ai/mcp`. Sign in with your CellCog account when asked; no SDK and no API key. Start with `cellcog_create_chat`, then poll `cellcog_get_result`. Everything below about prompts, files and modes still applies.
+
 ## The Power of Any-to-Any
 
 CellCog is the only AI that truly handles **any input → any output** in a single request. No tool chaining. No orchestration complexity. One call, multiple deliverables.

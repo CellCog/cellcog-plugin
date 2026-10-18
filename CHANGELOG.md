@@ -2,6 +2,16 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.4.1] - 2026-10-18
+
+### SDK or MCP, and Claude directory fixes
+
+- `cellcog` skill: opens with how to choose: the Python SDK on a persistent machine, the
+  MCP connector everywhere else (Claude.ai, Desktop, Cowork), no API key needed there.
+- Claude manifest: `privacyPolicyUrl` set; the `logo` and `rules` fields Claude ignores
+  removed (the Cursor and Open Plugins manifests keep them).
+- Manifest versions bumped to 2.4.1.
+
 ## [2.4.0] - 2026-10-18
 
 ### AI employees

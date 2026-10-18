@@ -1,7 +1,7 @@
 {
   "name": "cellcog",
   "displayName": "CellCog",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Powered by CellCog. Generate images, videos, PDFs, presentations, research reports, music, spreadsheets, 3D models, memes, diagrams, prototypes, game assets, stickers, and more — from natural language prompts. Any input, any deliverable.",
   "author": {
     "name": "CellCog",
@@ -10,7 +10,7 @@
   "homepage": "https://cellcog.ai",
   "repository": "https://github.com/CellCog/cellcog-plugin",
   "license": "MIT",
-  "logo": "assets/logo.png",
+  "privacyPolicyUrl": "https://cellcog.ai/support/privacy-policy",
   "keywords": [
     "image-generation",
     "video-generation",
@@ -31,6 +31,5 @@
     "deep-research"
   ],
   "skills": "./skills/",
-  "rules": "./rules/",
   "commands": "./commands/"
 }
