@@ -7,7 +7,7 @@ description: "Any-to-any AI sub-agent — research, images, video, audio, music,
 ## SDK or MCP? Pick your way in first
 
 - **You run on a persistent machine** (you can `pip install` and keep files and environment variables between turns: Claude Code, Cursor, Codex, OpenClaw, a server): use the **Python SDK** below. It gives the better agent experience: send and move on, files saved straight to disk, state that survives restarts.
-- **No persistent machine** (Claude.ai, Claude Desktop, Cowork, other hosted chat apps), or the `cellcog_*` tools are already connected: use the **CellCog MCP connector** at `https://cellcog.ai/mcp`. Sign in with your CellCog account when asked; no SDK and no API key. Start with `cellcog_create_chat`, then poll `cellcog_get_result`. Everything below about prompts, files and modes still applies.
+- **No persistent machine** (Claude.ai, Claude Desktop, Cowork, other hosted chat apps), or the `cellcog_*` tools are already connected: use the **CellCog MCP connector** at `https://cellcog.ai/mcp`. Sign in with your CellCog account when asked; no SDK and no API key. Start with `cellcog_chat_create`, then poll `cellcog_get_result`. Chat tools are named cellcog_chat_..., AI employee tools cellcog_employee_.... Everything below about prompts, files and modes still applies.
 
 ## The Power of Any-to-Any
 
@@ -303,7 +303,7 @@ CellCog has two ways to hand off work:
 - **A chat is a subagent for one task.** It only knows what you pass in and works out the rest from scratch. Use it for a one-off or throwaway job (one image, a set of videos, a deck, a research report) where all the context fits in your brief. It is the cheapest way to get one job done.
 - **An AI employee is a long-running teammate.** It keeps memory and skills you teach it, runs routines, has its own inbox, and its context is managed for you across days or months. Use it for a project you will prompt again (a web series, a content calendar, a client account). It costs more per task and pays back in consistency.
 
-Most of the work inside CellCog itself runs through AI employees. To instruct one from your agent (`list_employees`, `message_employee`, `get_result(employee_id=...)`, shifts), read the **ai-employees-cellcog** skill.
+Most of the work inside CellCog itself runs through AI employees. Your agent can hire one (`hire_employee(brief)`, SDK 2.6.0+; over MCP `cellcog_employee_hire`) and then instruct it (`list_employees`, `message_employee`, `get_result(employee_id=...)`, shifts). Anything else about the employee (its routines, schedule, email, tools) you change by asking it in a message; pausing and deleting stay on the web. Read the **ai-employees-cellcog** skill.
 
 ---
 

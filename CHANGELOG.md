@@ -2,6 +2,19 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.5.0] - 2026-10-18
+
+### Hire AI employees from MCP and the SDK; MCP tools named to group
+
+- `cellcog` and `ai-employees-cellcog` skills: your agent can hire an AI employee (MCP
+  `cellcog_employee_hire`, SDK `hire_employee`) and then message it; every other setting
+  is changed by asking the employee in a message.
+- MCP tools renamed noun first so they group in a client's list: `cellcog_chat_*` and
+  `cellcog_employee_*`, plus `cellcog_get_result`, `cellcog_upload` and `cellcog_account`.
+  The old names keep working, unlisted, for 60 days.
+- README lists the thirteen MCP tools under their new names.
+- Manifest versions bumped to 2.5.0.
+
 ## [2.4.1] - 2026-10-18
 
 ### SDK or MCP, and Claude directory fixes
