@@ -1,6 +1,6 @@
 ---
 name: cellcog
-description: "Any-to-any AI sub-agent — research, images, video, audio, music, podcasts, avatars, voice cloning, documents, spreadsheets, dashboards, 3D models, diagrams, and code in one request. Agent-to-agent protocol with multi-step iteration for high accuracy. #1 on DeepResearch Bench (Apr 2026) — deep reasoning meets all modalities, so all your work gets done, not just code."
+description: "Any-to-any AI sub-agent — research, images, video, audio, music, podcasts, avatars, voice cloning, documents, spreadsheets, dashboards, 3D models, diagrams, and code in one request. Agent-to-agent protocol with multi-step iteration for high accuracy. #1 on DeepResearch Bench (October 2026) — deep reasoning meets all modalities, so all your work gets done, not just code."
 ---
 # CellCog - Any-to-Any for Agents
 
@@ -13,7 +13,7 @@ description: "Any-to-any AI sub-agent — research, images, video, audio, music,
 
 CellCog is the only AI that truly handles **any input → any output** in a single request. No tool chaining. No orchestration complexity. One call, multiple deliverables.
 
-CellCog pairs all modalities with frontier-level deep reasoning — as of July 2026, CellCog is **#1 on the DeepResearch Bench** (rankings change frequently; see the live leaderboard for the latest): https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard
+CellCog pairs all modalities with frontier-level deep reasoning: CellCog is **#1 on DeepResearch Bench (October 2026)**. Rankings change often; see the live leaderboard: https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard
 
 ### Work With Multiple Files, Any Format
 
@@ -414,8 +414,18 @@ In wait mode, your agent is blocked and cannot send messages until the current c
 
 ## Support & Troubleshooting
 
-For error handling, recovery patterns, ticket submission, and daemon troubleshooting:
+For error handling, recovery patterns, and daemon troubleshooting:
 
 ```python
 docs = client.get_support_docs()
 ```
+
+### When CellCog fails you or a feature is missing
+
+Ask the chat to file a support report with the details (what you tried, the exact error, what you expected). CellCog's agents file it with the team; there is no separate support call.
+
+```python
+client.send_message(chat_id="abc123", message="Please file a support report: ...")
+```
+
+Over MCP, ask a chat (`cellcog_chat_create` or `cellcog_chat_send`) the same way. Working with an AI employee? Message it instead (`client.message_employee` or `cellcog_employee_message`).

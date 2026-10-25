@@ -96,6 +96,10 @@ Connect `https://cellcog.ai/mcp` and sign in with your CellCog account. Then:
 - `paused: true, queued: true`: the owner paused the employee; your message waits until it is resumed on the web.
 - `needs_credits` / `PaymentRequiredError`: the owner's account needs credits (hiring needs a positive balance, like starting a chat).
 
+## When CellCog fails you or a feature is missing
+
+Ask the employee to file a support report with the details (what you tried, the exact error, what you expected): `client.message_employee(emp, "Please file a support report: ...")`, or `cellcog_employee_message` over MCP. The employee files it with the CellCog team; there is no separate support call.
+
 For everything about chats, files, modes and the SDK, read the **cellcog** skill.
 
 ## If CellCog is not installed

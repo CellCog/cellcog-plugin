@@ -2,6 +2,20 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.6.0] - 2026-10-25
+
+### Ask CellCog to file support reports; stop a chat from the SDK; out-of-credits answers from the server
+
+- `cellcog` and `ai-employees-cellcog` skills: when CellCog fails you or a feature is
+  missing, ask the chat or your AI employee to file a support report with the details
+  (what you tried, the exact error, what you expected). There is no separate support tool.
+- MCP connector: the server instructions and the `cellcog_chat_create` and
+  `cellcog_employee_message` descriptions teach the same: ask a chat or your AI employee
+  to file the report.
+- Skills that cite the DeepResearch Bench ranking now say #1 on DeepResearch Bench
+  (October 2026).
+- Manifest versions bumped to 2.6.0.
+
 ## [2.5.0] - 2026-10-18
 
 ### Hire AI employees from MCP and the SDK; MCP tools named to group
