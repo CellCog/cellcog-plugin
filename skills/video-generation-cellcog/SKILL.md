@@ -139,7 +139,7 @@ For lipsync videos:
 | Scenario | Recommended |
 |----------|-------------|
 | All video production | `chat_mode="agent", chat_tier="max"` |
-| Trivial single-shot clips | `chat_mode="agent"` (defaults to `"flash"`) |
+| Trivial single-shot clips | `chat_mode="agent", chat_tier="flash"` |
 
 Agent Team (`chat_mode="team"`) is reserved for deep research — video generation runs best on Agent max.
 

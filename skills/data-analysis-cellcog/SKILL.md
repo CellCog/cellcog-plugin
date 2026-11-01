@@ -190,7 +190,7 @@ Applied ML without the setup:
 | Scenario | Recommended |
 |----------|-------------|
 | All data analysis and ML work | `chat_mode="agent", chat_tier="max"` |
-| Trivial one-column summaries | `chat_mode="agent"` (defaults to `"flash"`) |
+| Trivial one-column summaries | `chat_mode="agent", chat_tier="flash"` |
 
 Agent Team (`chat_mode="team"`) is reserved for deep research — data analysis runs best on Agent max.
 

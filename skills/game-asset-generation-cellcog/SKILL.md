@@ -166,10 +166,10 @@ Make your game feel polished:
 
 | Scenario | Recommended |
 |----------|-------------|
-| Individual assets and small sets | `chat_mode="agent"` (defaults to the `"flash"` tier) |
+| Individual assets and small sets | `chat_mode="agent"` (defaults to the `"core"` tier) |
 | Full game concepts, complex world building, style-consistent asset fleets | `chat_mode="agent", chat_tier="max"` |
 
-**The flash tier is the default and handles most game asset generation well** — fast and economical. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
+**The core tier is the default and handles most game asset generation well**, balanced speed and depth. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
 
 Agent Team (`chat_mode="team"`) is reserved for deep research — don't use it for game asset generation.
 

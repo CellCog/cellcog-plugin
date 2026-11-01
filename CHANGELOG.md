@@ -2,6 +2,15 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.6.1] - 2026-11-01
+
+### Core is the default tier everywhere
+
+- Skills now teach Core as the default tier in every mode, co-work included. Pass
+  `chat_tier="max"` for coding and heavy work, `chat_tier="flash"` for quick assets.
+- Skills no longer say Creative has no Flash tier; every mode offers Flash, Core and Max.
+- Manifest versions bumped to 2.6.1.
+
 ## [2.6.0] - 2026-10-25
 
 ### Ask CellCog to file support reports; stop a chat from the SDK; out-of-credits answers from the server

@@ -107,10 +107,10 @@ CellCog generates songs with **perfect AI vocals** — just describe the lyrical
 
 | Scenario | Recommended |
 |----------|-------------|
-| Songs, jingles, background tracks | `chat_mode="agent"` (defaults to the `"flash"` tier) |
+| Songs, jingles, background tracks | `chat_mode="agent"` (defaults to the `"core"` tier) |
 | Multi-track projects where cohesion matters | `chat_mode="agent", chat_tier="max"` |
 
-**The flash tier is the default and handles most music generation well** — fast and economical. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
+**The core tier is the default and handles most music generation well**, balanced speed and depth. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
 
 Agent Team (`chat_mode="team"`) is reserved for deep research — don't use it for music generation.
 

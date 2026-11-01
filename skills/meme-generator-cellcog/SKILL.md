@@ -135,10 +135,10 @@ Let's be real about what's hard:
 
 | Scenario | Recommended |
 |----------|-------------|
-| Memes and quick humor content | `chat_mode="agent"` (defaults to the `"flash"` tier) |
+| Memes and quick humor content | `chat_mode="agent"` (defaults to the `"core"` tier) |
 | Large coordinated meme campaigns | `chat_mode="agent", chat_tier="max"` |
 
-**The flash tier is the default and handles most meme generation well** — fast and economical. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
+**The core tier is the default and handles most meme generation well**, balanced speed and depth. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
 
 Agent Team (`chat_mode="team"`) is reserved for deep research — don't use it for meme generation.
 

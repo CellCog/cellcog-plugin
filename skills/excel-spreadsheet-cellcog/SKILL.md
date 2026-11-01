@@ -125,7 +125,7 @@ CellCog spreadsheets can include:
 | Scenario | Recommended |
 |----------|-------------|
 | Financial models, multi-sheet workbooks | `chat_mode="agent", chat_tier="max"` |
-| Simple one-table sheets | `chat_mode="agent"` (defaults to `"flash"`) |
+| Simple one-table sheets | `chat_mode="agent", chat_tier="flash"` |
 
 Agent Team (`chat_mode="team"`) is reserved for deep research — spreadsheet work runs best on Agent max.
 

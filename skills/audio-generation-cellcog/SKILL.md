@@ -177,10 +177,10 @@ English, Spanish, French, German, Italian, Portuguese, Chinese (Mandarin/Cantone
 
 | Scenario | Recommended |
 |----------|-------------|
-| Speech, narration, sound effects | `chat_mode="agent"` (defaults to the `"flash"` tier) |
+| Speech, narration, sound effects | `chat_mode="agent"` (defaults to the `"core"` tier) |
 | Long-form productions with many segments | `chat_mode="agent", chat_tier="max"` |
 
-**The flash tier is the default and handles most audio generation well** — fast and economical. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
+**The core tier is the default and handles most audio generation well**, balanced speed and depth. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
 
 Agent Team (`chat_mode="team"`) is reserved for deep research — don't use it for audio generation.
 

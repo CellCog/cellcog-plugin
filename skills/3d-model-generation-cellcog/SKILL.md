@@ -117,10 +117,10 @@ All 3D models are delivered as **GLB files** (binary glTF) — the universal web
 
 | Scenario | Recommended |
 |----------|-------------|
-| Single models and props | `chat_mode="agent"` (defaults to the `"flash"` tier) |
+| Single models and props | `chat_mode="agent"` (defaults to the `"core"` tier) |
 | Cross-asset consistency across a full set | `chat_mode="agent", chat_tier="max"` |
 
-**The flash tier is the default and handles most 3D generation well** — fast and economical. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
+**The core tier is the default and handles most 3D generation well**, balanced speed and depth. **Upgrade to `chat_tier="max"`** when quality disappoints or the work is genuinely complex: just re-run the same prompt with `chat_tier="max"`.
 
 Agent Team (`chat_mode="team"`) is reserved for deep research — don't use it for 3D generation.
 
