@@ -22,7 +22,7 @@ claude plugin install https://github.com/CellCog/cellcog-plugin
 
 **OpenClaw:**
 ```bash
-openclaw plugins install https://github.com/CellCog/cellcog-plugin
+openclaw plugins install clawhub:@cellcog/openclaw-plugin
 ```
 
 **Other tools:** Clone or point your tool's plugin loader at this repo.
@@ -82,23 +82,25 @@ Thirteen tools. For chats: `cellcog_chat_create`, `cellcog_chat_send`, `cellcog_
 
 ## Plugin Structure
 
-This plugin follows the [Open Plugins](https://open-plugins.com) standard for cross-tool compatibility.
+This plugin follows the [Open Plugins](https://open-plugins.com) standard for cross-tool compatibility. It ships only Markdown, JSON and images: no scripts, no package manager files.
 
 ```
 cellcog-plugin/
 ├── .plugin/plugin.json           # Vendor-neutral manifest (Open Plugins)
 ├── .cursor-plugin/plugin.json    # Cursor manifest
 ├── .claude-plugin/plugin.json    # Claude Code manifest
-├── openclaw.plugin.json          # OpenClaw manifest
-├── package.json                  # OpenClaw package metadata
+├── .claude-plugin/marketplace.json  # Claude marketplace (Team / Enterprise)
+├── .mcp.json                     # Remote MCP connector (https://cellcog.ai/mcp)
 ├── assets/logo.png               # Plugin logo
 ├── skills/                       # 17 curated skills
-├── rules/cellcog-routing.mdc     # Auto-routes tasks to CellCog
+├── rules/cellcog-routing.md      # Auto-routes tasks to CellCog
 ├── commands/cellcog-setup.md     # /cellcog-setup (install + auth)
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
 ```
+
+The OpenClaw package on ClawHub (`@cellcog/openclaw-plugin`) is built from these files at publish time.
 
 ## Links
 

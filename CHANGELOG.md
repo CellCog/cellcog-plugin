@@ -2,6 +2,20 @@
 
 All notable changes to the CellCog plugin will be documented in this file.
 
+## [2.6.2] - 2026-11-06
+
+### The plugin repo ships Markdown, JSON and images only
+
+- The plugin repo now ships only Markdown, JSON and images, the file types Claude's plugin
+  directory accepts. The OpenClaw entry (index.js), package.json, openclaw.plugin.json and
+  the skill sync script left the repo.
+- The Cursor routing rule is now rules/cellcog-routing.md (same content; Cursor reads .md
+  rules from a plugin's rules/ folder).
+- OpenClaw users see no change: the ClawHub package @cellcog/openclaw-plugin is still a
+  code plugin, its OpenClaw files now added when it is published. README: install it with
+  `openclaw plugins install clawhub:@cellcog/openclaw-plugin`.
+- Manifest versions bumped to 2.6.2.
+
 ## [2.6.1] - 2026-11-01
 
 ### Core is the default tier everywhere
